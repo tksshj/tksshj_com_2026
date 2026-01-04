@@ -36,7 +36,6 @@ export default function PageContent() {
       }}
     >
       <Box
-        component='main'
         sx={{
           position: 'sticky',
           left: '0',
