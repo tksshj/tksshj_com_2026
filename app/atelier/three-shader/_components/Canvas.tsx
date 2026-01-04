@@ -2,6 +2,9 @@ import Box from '@mui/material/Box'
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 
+const WIDTH = 1024
+const HEIGHT = 1024
+
 export default function Canvas() {
   const mountRef = useRef<HTMLDivElement | null>(null)
 
@@ -14,8 +17,8 @@ export default function Canvas() {
     const height = width
 
     const renderer = new THREE.WebGLRenderer({ alpha: false, antialias: true })
-    renderer.setSize(width, height)
-    renderer.setPixelRatio(window.devicePixelRatio)
+    renderer.setSize(WIDTH, HEIGHT)
+    // renderer.setPixelRatio(window.devicePixelRatio)
     renderer.setClearColor(0xffffff, 1)
     mount.appendChild(renderer.domElement)
 

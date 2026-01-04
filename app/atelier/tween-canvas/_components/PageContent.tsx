@@ -56,7 +56,7 @@ export default function PageContent() {
     return () => {
       cancelAnimationFrame(raf)
     }
-  }, [])
+  }, [canvasRef.current])
 
   return (
     <Box sx={{ padding: '20px 0 0' }}>

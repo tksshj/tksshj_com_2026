@@ -12,6 +12,10 @@
     "path": "/atelier/canvas"
   },
   {
+    "title": "canvas-texture",
+    "path": "/atelier/canvas-texture"
+  },
+  {
     "title": "scroll",
     "path": "/atelier/scroll"
   },
