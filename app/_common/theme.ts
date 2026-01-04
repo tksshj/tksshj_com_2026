@@ -72,49 +72,59 @@ const theme = createTheme({
     borderRadius: 8,
   },
   components: {
+    // MuiCssBaseline: {
+    //   styleOverrides: (theme) => ({
+    //     html: {
+    //       fontSize: '14px',
+    //       [theme.breakpoints.up('md')]: {
+    //         fontSize: '16px',
+    //       },
+    //     },
+    //   }),
+    // },
     MuiTypography: {
       styleOverrides: {
         h1: {
-          fontSize: '2.0rem',
-          fontWeight: '400',
+          fontSize: '1.8rem',
+          fontWeight: '600',
           lineHeight: 1.5,
         },
         h2: {
           fontSize: '1.5rem',
-          fontWeight: '400',
+          fontWeight: '600',
           lineHeight: 1.5,
         },
         h3: {
-          fontSize: '1.25rem',
+          fontSize: '1.3rem',
           fontWeight: '600',
           lineHeight: 1.5,
         },
         h4: {
-          fontSize: '1.05rem',
+          fontSize: '1.1rem',
           fontWeight: '600',
           lineHeight: 1.5,
         },
         h5: {
-          fontSize: '0.9rem',
+          fontSize: '1.0rem',
           fontWeight: '600',
           lineHeight: 1.5,
         },
         h6: {
-          fontSize: '0.75rem',
+          fontSize: '0.8rem',
           fontWeight: '600',
           lineHeight: 1.5,
         },
         body1: {
-          fontSize: '0.9rem',
-          lineHeight: '1.5em',
+          fontSize: '1.0rem',
+          lineHeight: 1.5,
         },
         body2: {
-          fontSize: '0.75rem',
-          lineHeight: '1.5em',
+          fontSize: '0.85rem',
+          lineHeight: 1.5,
         },
         caption: {
-          fontSize: '0.65rem',
-          lineHeight: '1em',
+          fontSize: '0.7rem',
+          lineHeight: 1.5,
         },
       },
     },

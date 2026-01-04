@@ -4,12 +4,24 @@
     "path": "/atelier/canvas-01"
   },
   {
-    "title": "tween-01",
-    "path": "/atelier/tween-01"
-  },
-  {
     "title": "scroll-01",
     "path": "/atelier/scroll-01"
+  },
+  {
+    "title": "three-shader-01",
+    "path": "/atelier/three-shader-01"
+  },
+  {
+    "title": "three-shader-02",
+    "path": "/atelier/three-shader-02"
+  },
+  {
+    "title": "three-shader-03",
+    "path": "/atelier/three-shader-03"
+  },
+  {
+    "title": "tween-01",
+    "path": "/atelier/tween-01"
   },
   {
     "title": "typography-01",

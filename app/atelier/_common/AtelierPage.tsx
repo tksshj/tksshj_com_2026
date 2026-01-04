@@ -25,12 +25,13 @@ export default function AtelierPage({ children }: { children: ReactNode }) {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
+          gap: '16px',
           borderBottom: (theme) => `solid 1px ${theme.palette.divider}`,
           backgroundColor: (theme) => theme.palette.background.default,
         }}
       >
         <MuiLink component={Link} href='/' underline='none'>
-          <Typography component='h1' variant='h1'>
+          <Typography component='h1' variant='h1' sx={{ fontWeight: '300' }}>
             tksshj.com
           </Typography>
         </MuiLink>

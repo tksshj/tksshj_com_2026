@@ -8,6 +8,7 @@ index =
   atelier_dir
     .children
     .select { |pn| pn.directory? && !pn.basename.to_s.start_with?("_") }
+    .sort
     .map { |item| { title: item.basename.to_s, path: "/atelier/#{item.basename}" } }
 
 json_path.write JSON.pretty_generate(index)
