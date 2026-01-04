@@ -20,8 +20,12 @@
     "path": "/atelier/three-shader"
   },
   {
-    "title": "tween-01",
-    "path": "/atelier/tween-01"
+    "title": "tween",
+    "path": "/atelier/tween"
+  },
+  {
+    "title": "tween-canvas",
+    "path": "/atelier/tween-canvas"
   },
   {
     "title": "typography",
