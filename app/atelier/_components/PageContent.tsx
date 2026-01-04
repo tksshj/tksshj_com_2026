@@ -11,7 +11,7 @@ export default function PageContent() {
       <Box component='ul'>
         {index.map((item) => (
           <Box key={item.title} component='li' sx={{ margin: '0 0 16px' }}>
-            <MuiLink component={Link} href={item.path}>
+            <MuiLink component={Link} href={item.path} color='inherit'>
               <Typography component='p' variant='body1'>
                 {item.title}
               </Typography>

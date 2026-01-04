@@ -44,7 +44,7 @@ export default function AtelierPage({ children }: { children: ReactNode }) {
                 {decodeURIComponent(segment)}
               </Typography>
             ) : (
-              <MuiLink key={href} component={Link} href={href} underline='hover' color='inherit'>
+              <MuiLink key={href} component={Link} href={href} color='inherit'>
                 {decodeURIComponent(segment)}
               </MuiLink>
             )

@@ -7,7 +7,8 @@
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start --webpack",
-    "lint": "eslint"
+    "lint": "eslint",
+    "index": "ruby scripts/create_atelier_index.rb"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
