@@ -1,30 +1,30 @@
 [
   {
-    "title": "canvas-01",
-    "path": "/atelier/canvas-01"
+    "title": "bokeh-circle-01",
+    "path": "/atelier/bokeh-circle-01"
   },
   {
-    "title": "scroll-01",
-    "path": "/atelier/scroll-01"
+    "title": "bokeh-circle-02",
+    "path": "/atelier/bokeh-circle-02"
   },
   {
-    "title": "three-shader-01",
-    "path": "/atelier/three-shader-01"
+    "title": "canvas",
+    "path": "/atelier/canvas"
   },
   {
-    "title": "three-shader-02",
-    "path": "/atelier/three-shader-02"
+    "title": "scroll",
+    "path": "/atelier/scroll"
   },
   {
-    "title": "three-shader-03",
-    "path": "/atelier/three-shader-03"
+    "title": "three-shader",
+    "path": "/atelier/three-shader"
   },
   {
     "title": "tween-01",
     "path": "/atelier/tween-01"
   },
   {
-    "title": "typography-01",
-    "path": "/atelier/typography-01"
+    "title": "typography",
+    "path": "/atelier/typography"
   }
 ]
