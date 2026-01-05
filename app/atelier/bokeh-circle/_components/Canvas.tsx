@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 
@@ -30,25 +31,36 @@ export default function Canvas() {
         },
       },
       vertexShader: `
+        varying vec2 vUv;
+
         void main() {
-          gl_Position = vec4(position, 1.0);
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
         }
       `,
       fragmentShader: `
         uniform vec2 uResolution;
+        varying vec2 vUv;
 
         void main() {
-          vec2 uv = gl_FragCoord.xy / uResolution.xy - 0.5;
+          vec2 uv = vUv - 0.5;
           if (0.5 < length(uv)) {
             discard;
           }
-          float mask = smoothstep(0.5, 0.0, length(uv));
+          float shape = smoothstep(0.5, 0.0, length(uv));
+
+          // vec3 targetColor = vec3(0.2627, 0.3098, 0.4000);
+          // gl_FragColor = vec4(targetColor, shape);
+
+          // mix使うといい感じなんだけど、複数重ねたときどうなるんだろうか
+          // bgColorをどうやってもってくるのか
           vec3 bgColor = vec3(0.8941, 0.9059, 0.9255);
           vec3 targetColor = vec3(0.2627, 0.3098, 0.4000);
-          vec3 mixed = mix(bgColor, targetColor, mask * 2.0);
-          gl_FragColor = vec4(mixed, 1.0);
+          vec3 mixed = mix(bgColor, targetColor, shape * 2.0);
+          gl_FragColor = vec4(mixed, shape);
         }
       `,
+      transparent: true,
     })
 
     const geometry = new THREE.PlaneGeometry(2, 2)
@@ -78,14 +90,17 @@ export default function Canvas() {
   }, [])
 
   return (
-    <Box
-      sx={{
-        width: '100%',
-        canvas: {
+    <Box>
+      <Box
+        sx={{
           width: '100%',
-        },
-      }}
-      ref={mountRef}
-    />
+          canvas: {
+            width: '100%',
+          },
+        }}
+        ref={mountRef}
+      />
+      <Typography component='p' variant='body1'></Typography>
+    </Box>
   )
 }
