@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import PageContent from './_components/PageContent'
 
 export const metadata: Metadata = {
-  title: 'canvas | tksshj.com/atelier',
+  title: 'canvas | atelier | tksshj.com',
 }
 
 export default function page() {

@@ -16,6 +16,10 @@
     "path": "/atelier/canvas-texture"
   },
   {
+    "title": "plane-geometry",
+    "path": "/atelier/plane-geometry"
+  },
+  {
     "title": "points",
     "path": "/atelier/points"
   },
