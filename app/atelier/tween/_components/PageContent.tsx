@@ -18,7 +18,7 @@ export default function PageContent() {
       .onComplete(() => {
         console.log('done')
       })
-      .start()
+      .start(0)
 
     let raf = 0
     let startTime = performance.now()

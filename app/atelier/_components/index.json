@@ -1,5 +1,9 @@
 [
   {
+    "title": "bokeh-circle",
+    "path": "/atelier/bokeh-circle"
+  },
+  {
     "title": "canvas",
     "path": "/atelier/canvas"
   },

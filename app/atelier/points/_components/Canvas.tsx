@@ -15,13 +15,9 @@ export default function Canvas() {
     if (!mount) {
       return
     }
-    const width = mount.clientHeight
-    const height = width
 
-    const renderer = new THREE.WebGLRenderer({ alpha: false, antialias: true })
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
     renderer.setSize(WIDTH, HEIGHT, false)
-    // renderer.setPixelRatio(window.devicePixelRatio)
-    renderer.setClearColor(0xe4e7ec, 1)
     mount.appendChild(renderer.domElement)
 
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.01, 10)
@@ -64,7 +60,7 @@ export default function Canvas() {
           if (length(uv) > 0.5) {
              discard;
           }
-      float shape = smoothstep(0.5, 0.0, length(uv));
+          float shape = smoothstep(0.5, 0.0, length(uv));
           vec3 targetColor = vec3(0.2627, 0.3098, 0.4000);
           gl_FragColor = vec4(targetColor, shape);
         }

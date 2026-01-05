@@ -31,14 +31,22 @@ export default function Canvas() {
       },
       vertexShader: `
         void main() {
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          gl_Position = vec4(position, 1.0);
         }
       `,
       fragmentShader: `
         uniform vec2 uResolution;
 
         void main() {
-          gl_FragColor = vec4(gl_FragCoord.xy / uResolution.xy, 1.0, 1.0);
+          vec2 uv = gl_FragCoord.xy / uResolution.xy - 0.5;
+          if (0.5 < length(uv)) {
+            discard;
+          }
+          float mask = smoothstep(0.5, 0.0, length(uv));
+          vec3 bgColor = vec3(0.8941, 0.9059, 0.9255);
+          vec3 targetColor = vec3(0.2627, 0.3098, 0.4000);
+          vec3 mixed = mix(bgColor, targetColor, mask * 2.0);
+          gl_FragColor = vec4(mixed, 1.0);
         }
       `,
     })
