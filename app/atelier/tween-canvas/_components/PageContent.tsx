@@ -40,15 +40,13 @@ export default function PageContent() {
       .onComplete(() => {
         console.log('done')
       })
-      .start()
+      .start(0)
 
     let raf = 0
     let startTime = performance.now()
     const draw = (now: number) => {
-      const elapsed = now - startTime
-      const reverse = 1 <= (elapsed % (DURATION * 2)) / DURATION
-      const time = reverse ? DURATION - (elapsed % DURATION) : elapsed % DURATION
-      tween.update(time)
+      const elapsed = (now - startTime) % DURATION
+      tween.update(elapsed)
       raf = requestAnimationFrame(draw)
     }
     raf = requestAnimationFrame(draw)
@@ -56,7 +54,7 @@ export default function PageContent() {
     return () => {
       cancelAnimationFrame(raf)
     }
-  }, [canvasRef.current])
+  }, [])
 
   return (
     <Box sx={{ padding: '20px 0 0' }}>
