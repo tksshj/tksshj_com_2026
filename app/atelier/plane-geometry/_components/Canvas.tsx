@@ -17,7 +17,7 @@ export default function Canvas() {
     const height = width
 
     const renderer = new THREE.WebGLRenderer({ alpha: false, antialias: true })
-    renderer.setSize(WIDTH, HEIGHT)
+    renderer.setSize(WIDTH, HEIGHT, false)
     // renderer.setPixelRatio(window.devicePixelRatio)
     renderer.setClearColor(0xffffff, 1)
     mount.appendChild(renderer.domElement)
@@ -120,3 +120,11 @@ export default function Canvas() {
     />
   )
 }
+
+// <Typography variant='p
+//       <pre>
+//     const geometry = new THREE.PlaneGeometry(2, 2)
+
+//   const geometry = new THREE.BufferGeometry()
+//   geometry.setAttribute('position', new THREE.Float32BufferAttribute([-1, -1, 0, 1, -1, 0, 1, 1, 0, -1, 1, 0], 3))
+//   geometry.setIndex([0, 1, 2, 0, 2, 3])

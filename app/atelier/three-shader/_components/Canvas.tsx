@@ -16,10 +16,8 @@ export default function Canvas() {
     const width = mount.clientHeight
     const height = width
 
-    const renderer = new THREE.WebGLRenderer({ alpha: false, antialias: true })
-    renderer.setSize(WIDTH, HEIGHT)
-    // renderer.setPixelRatio(window.devicePixelRatio)
-    renderer.setClearColor(0xffffff, 1)
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
+    renderer.setSize(WIDTH, HEIGHT, false)
     mount.appendChild(renderer.domElement)
 
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.01, 10)
@@ -28,21 +26,34 @@ export default function Canvas() {
     const scene = new THREE.Scene()
 
     const material = new THREE.ShaderMaterial({
+      uniforms: {
+        uResolution: {
+          value: new THREE.Vector2(WIDTH, HEIGHT),
+        },
+      },
       vertexShader: `
         void main() {
           gl_Position = vec4(position, 1.0);
         }
       `,
       fragmentShader: `
+        uniform vec2 uResolution;
+
         void main() {
-          gl_FragColor = vec4(0.2627, 0.3098, 0.4000, 1.0);
+          vec2 uv = gl_FragCoord.xy / uResolution.xy - 0.5;
+          if (0.5 < length(uv)) {
+            discard;
+          }
+          float mask = smoothstep(0.5, 0.0, length(uv));
+          vec3 bgColor = vec3(0.8941, 0.9059, 0.9255);
+          vec3 targetColor = vec3(0.2627, 0.3098, 0.4000);
+          vec3 mixed = mix(bgColor, targetColor, mask);
+          gl_FragColor = vec4(mixed, 1.0);
         }
       `,
     })
 
-    const geometry = new THREE.BufferGeometry()
-    geometry.setAttribute('position', new THREE.Float32BufferAttribute([-1, -1, 0, 1, -1, 0, 1, 1, 0, -1, 1, 0], 3))
-    geometry.setIndex([0, 1, 2, 0, 2, 3])
+    const geometry = new THREE.PlaneGeometry(2, 2)
 
     const mesh = new THREE.Mesh(geometry, material)
     scene.add(mesh)
@@ -71,7 +82,6 @@ export default function Canvas() {
   return (
     <Box
       sx={{
-        aspectRatio: 1,
         width: '100%',
         canvas: {
           width: '100%',
