@@ -13,8 +13,6 @@ export default function Canvas() {
     if (!mount) {
       return
     }
-    const width = mount.clientHeight
-    const height = width
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
     renderer.setSize(WIDTH, HEIGHT, false)
@@ -47,7 +45,7 @@ export default function Canvas() {
           float mask = smoothstep(0.5, 0.0, length(uv));
           vec3 bgColor = vec3(0.8941, 0.9059, 0.9255);
           vec3 targetColor = vec3(0.2627, 0.3098, 0.4000);
-          vec3 mixed = mix(bgColor, targetColor, mask);
+          vec3 mixed = mix(bgColor, targetColor, mask * 2.0);
           gl_FragColor = vec4(mixed, 1.0);
         }
       `,
