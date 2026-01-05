@@ -30,6 +30,9 @@ export default function PageContent() {
             margin: '0 0 24px',
             padding: '16px 0 0',
             borderTop: (theme) => `solid 1px ${theme.palette.divider}`,
+            '&:first-child': {
+              borderTop: 'none',
+            },
           }}
         >
           <Typography

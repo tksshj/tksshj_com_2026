@@ -1,19 +1,23 @@
 [
   {
-    "title": "bokeh-circle-01",
-    "path": "/atelier/bokeh-circle-01"
-  },
-  {
-    "title": "bokeh-circle-02",
-    "path": "/atelier/bokeh-circle-02"
-  },
-  {
     "title": "canvas",
     "path": "/atelier/canvas"
   },
   {
     "title": "canvas-texture",
     "path": "/atelier/canvas-texture"
+  },
+  {
+    "title": "fragment-bokeh-01",
+    "path": "/atelier/fragment-bokeh-01"
+  },
+  {
+    "title": "fragment-bokeh-02",
+    "path": "/atelier/fragment-bokeh-02"
+  },
+  {
+    "title": "palette",
+    "path": "/atelier/palette"
   },
   {
     "title": "plane-geometry",
