@@ -16,6 +16,10 @@
     "path": "/atelier/canvas-texture"
   },
   {
+    "title": "points",
+    "path": "/atelier/points"
+  },
+  {
     "title": "scroll",
     "path": "/atelier/scroll"
   },
