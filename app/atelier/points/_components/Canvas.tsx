@@ -19,7 +19,7 @@ export default function Canvas() {
     const height = width
 
     const renderer = new THREE.WebGLRenderer({ alpha: false, antialias: true })
-    renderer.setSize(WIDTH, HEIGHT)
+    renderer.setSize(WIDTH, HEIGHT, false)
     // renderer.setPixelRatio(window.devicePixelRatio)
     renderer.setClearColor(0xe4e7ec, 1)
     mount.appendChild(renderer.domElement)
@@ -113,7 +113,6 @@ export default function Canvas() {
   return (
     <Box
       sx={{
-        aspectRatio: 1,
         width: '100%',
         canvas: {
           width: '100%',
