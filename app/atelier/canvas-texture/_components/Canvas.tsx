@@ -29,10 +29,8 @@ export default function Canvas() {
     context.textBaseline = 'middle'
     context.fillText('ABC', WIDTH * 0.5, HEIGHT * 0.5)
 
-    const renderer = new THREE.WebGLRenderer({ alpha: false, antialias: true })
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
     renderer.setSize(WIDTH, HEIGHT, false)
-    // renderer.setPixelRatio(window.devicePixelRatio)
-    renderer.setClearColor(0xe4e7ec, 1)
     mount.appendChild(renderer.domElement)
 
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.01, 10)
@@ -48,21 +46,16 @@ export default function Canvas() {
     const material = new THREE.ShaderMaterial({
       uniforms: {
         uTexture: { value: texture },
-        uPos: { value: 0 },
       },
       vertexShader: `
-        precision mediump float;
-
         varying vec2 vUv;
 
         void main() {
           vUv = position.xy * 0.5 + 0.5;
-          gl_Position = vec4(position, 1.0);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
         }
       `,
       fragmentShader: `
-        precision mediump float;
-
         uniform sampler2D uTexture;
         varying vec2 vUv;
 
@@ -73,9 +66,7 @@ export default function Canvas() {
       `,
     })
 
-    const geometry = new THREE.BufferGeometry()
-    geometry.setAttribute('position', new THREE.Float32BufferAttribute([-1, -1, 0, 1, -1, 0, 1, 1, 0, -1, 1, 0], 3))
-    geometry.setIndex([0, 1, 2, 0, 2, 3])
+    const geometry = new THREE.PlaneGeometry(2, 2)
 
     const mesh = new THREE.Mesh(geometry, material)
     scene.add(mesh)
@@ -94,7 +85,7 @@ export default function Canvas() {
       material.dispose()
       mount.removeChild(renderer.domElement)
     }
-  }, [mountRef.current])
+  }, [])
 
   return (
     <Box
