@@ -32,8 +32,8 @@
     "path": "/atelier/plane-geometry"
   },
   {
-    "title": "points",
-    "path": "/atelier/points"
+    "title": "points-01",
+    "path": "/atelier/points-01"
   },
   {
     "title": "points-02",
@@ -44,8 +44,20 @@
     "path": "/atelier/points-5184"
   },
   {
-    "title": "points-snoise",
-    "path": "/atelier/points-snoise"
+    "title": "points-gnoise-01",
+    "path": "/atelier/points-gnoise-01"
+  },
+  {
+    "title": "points-gnoise-02",
+    "path": "/atelier/points-gnoise-02"
+  },
+  {
+    "title": "points-snoise-01",
+    "path": "/atelier/points-snoise-01"
+  },
+  {
+    "title": "points-snoise-02",
+    "path": "/atelier/points-snoise-02"
   },
   {
     "title": "scroll",
