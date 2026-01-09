@@ -47,15 +47,14 @@ vec3 gridFromIndex(float i) {
   float x = mod(i, uGridW);
   float y = floor(i / uGridW);
   vec2 uv = vec2(
-                 x / (uGridW - 1.0),
-                 y / (uGridH - 1.0)
+                 x / (uGridW - 1.0) + snoise(vec2(x, y) * uTime * 0.0000001),
+                 y / (uGridH - 1.0) + snoise(vec2(y, x) * uTime * 0.0000001)
                  );
-
   return vec3(uv * 2.0 - 1.0, 0.0);
 }
 
 void main() {
   vec3 gridPos = gridFromIndex(aIndex) * 0.95;
   gl_Position = projectionMatrix * modelViewMatrix * vec4(gridPos, 1.0);
-  gl_PointSize = snoise(gridPos.xy * uTime * 0.001) * 32.0;
+  gl_PointSize = 24.0 + snoise(vec2(aIndex, aIndex) * uTime * 0.0000001) * 32.0;
 }
