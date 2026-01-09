@@ -12,6 +12,10 @@
     "path": "/atelier/canvas-texture"
   },
   {
+    "title": "controls",
+    "path": "/atelier/controls"
+  },
+  {
     "title": "fragment-bokeh-01",
     "path": "/atelier/fragment-bokeh-01"
   },
