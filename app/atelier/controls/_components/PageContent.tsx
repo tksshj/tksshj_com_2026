@@ -13,7 +13,7 @@ import Slider from '@mui/material/Slider'
 import Switch from '@mui/material/Switch'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const rowSx = {
   padding: '24px',
