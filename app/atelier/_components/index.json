@@ -48,6 +48,10 @@
     "path": "/atelier/scroll"
   },
   {
+    "title": "text-to-points",
+    "path": "/atelier/text-to-points"
+  },
+  {
     "title": "three-shader",
     "path": "/atelier/three-shader"
   },
