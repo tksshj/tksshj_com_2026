@@ -1,94 +1,117 @@
 [
   {
+    "path": "/atelier/bokeh-circle",
     "title": "bokeh-circle",
-    "path": "/atelier/bokeh-circle"
+    "description": "smoothstep"
   },
   {
+    "path": "/atelier/canvas",
     "title": "canvas",
-    "path": "/atelier/canvas"
+    "description": ""
   },
   {
+    "path": "/atelier/canvas-texture",
     "title": "canvas-texture",
-    "path": "/atelier/canvas-texture"
+    "description": ""
   },
   {
+    "path": "/atelier/controls",
     "title": "controls",
-    "path": "/atelier/controls"
+    "description": ""
   },
   {
+    "path": "/atelier/fragment-bokeh-01",
     "title": "fragment-bokeh-01",
-    "path": "/atelier/fragment-bokeh-01"
+    "description": ""
   },
   {
+    "path": "/atelier/fragment-bokeh-02",
     "title": "fragment-bokeh-02",
-    "path": "/atelier/fragment-bokeh-02"
+    "description": ""
   },
   {
+    "path": "/atelier/new-year-2026-01",
     "title": "new-year-2026-01",
-    "path": "/atelier/new-year-2026-01"
+    "description": ""
   },
   {
+    "path": "/atelier/palette",
     "title": "palette",
-    "path": "/atelier/palette"
+    "description": ""
   },
   {
+    "path": "/atelier/plane-geometry",
     "title": "plane-geometry",
-    "path": "/atelier/plane-geometry"
+    "description": ""
   },
   {
+    "path": "/atelier/points-01",
     "title": "points-01",
-    "path": "/atelier/points-01"
+    "description": ""
   },
   {
+    "path": "/atelier/points-02",
     "title": "points-02",
-    "path": "/atelier/points-02"
+    "description": ""
   },
   {
+    "path": "/atelier/points-03",
     "title": "points-03",
-    "path": "/atelier/points-03"
+    "description": ""
   },
   {
+    "path": "/atelier/points-5184",
     "title": "points-5184",
-    "path": "/atelier/points-5184"
+    "description": ""
   },
   {
+    "path": "/atelier/points-gnoise-01",
     "title": "points-gnoise-01",
-    "path": "/atelier/points-gnoise-01"
+    "description": ""
   },
   {
+    "path": "/atelier/points-gnoise-02",
     "title": "points-gnoise-02",
-    "path": "/atelier/points-gnoise-02"
+    "description": ""
   },
   {
+    "path": "/atelier/points-snoise-01",
     "title": "points-snoise-01",
-    "path": "/atelier/points-snoise-01"
+    "description": ""
   },
   {
+    "path": "/atelier/points-snoise-02",
     "title": "points-snoise-02",
-    "path": "/atelier/points-snoise-02"
+    "description": ""
   },
   {
+    "path": "/atelier/scroll",
     "title": "scroll",
-    "path": "/atelier/scroll"
+    "description": ""
   },
   {
+    "path": "/atelier/text-to-points",
     "title": "text-to-points",
-    "path": "/atelier/text-to-points"
+    "description": ""
   },
   {
+    "path": "/atelier/three-shader",
     "title": "three-shader",
-    "path": "/atelier/three-shader"
+    "description": ""
   },
   {
+    "path": "/atelier/tween",
     "title": "tween",
-    "path": "/atelier/tween"
+    "description": ""
   },
   {
+    "path": "/atelier/tween-canvas",
     "title": "tween-canvas",
-    "path": "/atelier/tween-canvas"
+    "description": ""
   },
   {
+    "path": "/atelier/typography",
     "title": "typography",
-    "path": "/atelier/typography"
+    "description": ""
   }
 ]

@@ -53,7 +53,7 @@ export const palette: PaletteOptions = {
   },
   divider: hepeuNavy[200],
   action: {
-    hover: hepeuNavy[50],
+    hover: 'rgb(0 0 0 / 0.05)', // hepeuNavy[50],
     selected: 'rgba(0,0,0,0.08)',
     disabled: 'rgba(0,0,0,0.26)',
     disabledBackground: alpha(hepeuNavy[100], 0.75),

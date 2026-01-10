@@ -1,9 +1,11 @@
 import AtelierPage from '@/app/atelier/_common/AtelierPage'
 import type { Metadata } from 'next'
 import PageContent from './_components/PageContent'
+import metadataJson from './_components/metadata.json'
 
 export const metadata: Metadata = {
-  title: 'three-shader | atelier | tksshj.com',
+  title: `${metadataJson.title} | atelier | tksshj.com`,
+  description: metadataJson.description,
 }
 
 export default function page() {

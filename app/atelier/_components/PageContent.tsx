@@ -8,15 +8,29 @@ import index from './index.json'
 export default function PageContent() {
   return (
     <Box>
-      <Box component='ul'>
+      <Box component='ul' sx={{ listStyle: 'none', padding: '0', margin: '0' }}>
         {index.map((item) => (
-          <Box key={item.title} component='li' sx={{ margin: '0 0 16px' }}>
-            <MuiLink component={Link} href={item.path} color='inherit'>
-              <Typography component='p' variant='body1'>
+          <MuiLink key={item.title} component={Link} href={item.path} color='inherit' underline='hover'>
+            <Box
+              component='li'
+              sx={{
+                padding: '10px 16px',
+                display: 'flex',
+                alignItems: 'center',
+                borderBottom: (theme) => `solid 1px ${theme.palette.divider}`,
+                '&:hover': {
+                  backgroundColor: (theme) => theme.palette.action.hover,
+                },
+              }}
+            >
+              <Typography component='h4' variant='h4' sx={{ flex: '0 0 256px' }}>
                 {item.title}
               </Typography>
-            </MuiLink>
-          </Box>
+              <Typography component='p' variant='body1'>
+                {item.description}
+              </Typography>
+            </Box>
+          </MuiLink>
         ))}
       </Box>
     </Box>
