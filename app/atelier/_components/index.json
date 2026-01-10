@@ -1,8 +1,13 @@
 [
   {
-    "path": "/atelier/bokeh-circle",
-    "title": "bokeh-circle",
-    "description": "smoothstep"
+    "path": "/atelier/bokeh-circle-01",
+    "title": "bokeh-circle-01",
+    "description": "smoothstepでぼかす"
+  },
+  {
+    "path": "/atelier/bokeh-circle-02",
+    "title": "bokeh-circle-02",
+    "description": "smoothstepでぼかす"
   },
   {
     "path": "/atelier/canvas",
