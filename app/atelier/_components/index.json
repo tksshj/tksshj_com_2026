@@ -5,11 +5,6 @@
     "description": "smoothstepでぼかす"
   },
   {
-    "path": "/atelier/bokeh-circle-02",
-    "title": "bokeh-circle-02",
-    "description": "smoothstepでぼかす"
-  },
-  {
     "path": "/atelier/canvas",
     "title": "canvas",
     "description": ""
@@ -88,6 +83,16 @@
     "path": "/atelier/points-snoise-02",
     "title": "points-snoise-02",
     "description": ""
+  },
+  {
+    "path": "/atelier/polar-coordinates-01",
+    "title": "polar-coordinates-01",
+    "description": "極座標"
+  },
+  {
+    "path": "/atelier/polar-coordinates-02",
+    "title": "polar-coordinates-02",
+    "description": "極座標"
   },
   {
     "path": "/atelier/scroll",
