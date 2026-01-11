@@ -35,6 +35,11 @@
     "description": ""
   },
   {
+    "path": "/atelier/noise-legacy",
+    "title": "noise-legacy",
+    "description": ""
+  },
+  {
     "path": "/atelier/palette",
     "title": "palette",
     "description": ""
@@ -92,7 +97,7 @@
   {
     "path": "/atelier/polar-coordinates-02",
     "title": "polar-coordinates-02",
-    "description": "極座標"
+    "description": "極座標、sinで歪ませる"
   },
   {
     "path": "/atelier/scroll",
