@@ -1,6 +1,5 @@
 'use client'
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import fragmentShader from './frag.glsl'
@@ -28,9 +27,6 @@ export default function Canvas() {
 
     const material = new THREE.ShaderMaterial({
       transparent: true,
-      uniforms: {
-        uTime: { value: 0 },
-      },
       vertexShader: `
         varying vec2 vUv;
 
@@ -49,11 +45,10 @@ export default function Canvas() {
 
     let rafId = 0
     let running = true
-    const animate = (timestamp: number) => {
+    const animate = () => {
       if (!running) {
         return
       }
-      material.uniforms.uTime.value = timestamp
       renderer.render(scene, camera)
       rafId = requestAnimationFrame(animate)
     }
@@ -70,17 +65,14 @@ export default function Canvas() {
   }, [])
 
   return (
-    <Box>
-      <Box
-        sx={{
+    <Box
+      sx={{
+        width: '100%',
+        canvas: {
           width: '100%',
-          canvas: {
-            width: '100%',
-          },
-        }}
-        ref={mountRef}
-      />
-      <Typography component='p' variant='body1'></Typography>
-    </Box>
+        },
+      }}
+      ref={mountRef}
+    />
   )
 }

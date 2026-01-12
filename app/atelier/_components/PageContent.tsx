@@ -15,8 +15,9 @@ export default function PageContent() {
               component='li'
               sx={{
                 padding: '10px 16px',
-                display: 'flex',
+                display: { xs: 'block', sm: 'flex' },
                 alignItems: 'center',
+                gap: '8px',
                 borderBottom: (theme) => `solid 1px ${theme.palette.divider}`,
                 '&:hover': {
                   backgroundColor: (theme) => theme.palette.action.hover,
@@ -26,7 +27,7 @@ export default function PageContent() {
               <Typography component='h4' variant='h4' sx={{ flex: '0 0 256px' }}>
                 {item.title}
               </Typography>
-              <Typography component='p' variant='body1'>
+              <Typography component='p' variant='body1' sx={{ fontSize: { xs: '12px', sm: '14px' } }}>
                 {item.description}
               </Typography>
             </Box>

@@ -1,6 +1,5 @@
 'use client'
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import fragmentShader from './frag.glsl'
@@ -70,17 +69,14 @@ export default function Canvas() {
   }, [])
 
   return (
-    <Box>
-      <Box
-        sx={{
+    <Box
+      sx={{
+        width: '100%',
+        canvas: {
           width: '100%',
-          canvas: {
-            width: '100%',
-          },
-        }}
-        ref={mountRef}
-      />
-      <Typography component='p' variant='body1'></Typography>
-    </Box>
+        },
+      }}
+      ref={mountRef}
+    />
   )
 }

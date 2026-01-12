@@ -1,9 +1,8 @@
-'use client'
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import fragmentShader from './frag.glsl'
+import vertexShader from './vert.glsl'
 
 const WIDTH = 1024
 const HEIGHT = 1024
@@ -17,8 +16,11 @@ export default function Canvas() {
       return
     }
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
+    const renderer = new THREE.WebGLRenderer({ alpha: false, antialias: true })
     renderer.setSize(WIDTH, HEIGHT, false)
+    //    renderer.setPixelRatio(window.devicePixelRatio)
+
+    renderer.setClearColor(0xe4e7ec, 1)
     mount.appendChild(renderer.domElement)
 
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.01, 10)
@@ -27,22 +29,17 @@ export default function Canvas() {
     const scene = new THREE.Scene()
 
     const material = new THREE.ShaderMaterial({
-      transparent: true,
       uniforms: {
+        uResolution: { value: new THREE.Vector2(WIDTH, HEIGHT) },
         uTime: { value: 0 },
       },
-      vertexShader: `
-        varying vec2 vUv;
-
-        void main() {
-          vUv = uv;
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        }
-      `,
-      fragmentShader: fragmentShader,
+      vertexShader,
+      fragmentShader,
     })
 
-    const geometry = new THREE.PlaneGeometry(2, 2)
+    const geometry = new THREE.BufferGeometry()
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute([-1, -1, 0, 1, -1, 0, 1, 1, 0, -1, 1, 0], 3))
+    geometry.setIndex([0, 1, 2, 0, 2, 3])
 
     const mesh = new THREE.Mesh(geometry, material)
     scene.add(mesh)
@@ -70,17 +67,15 @@ export default function Canvas() {
   }, [])
 
   return (
-    <Box>
-      <Box
-        sx={{
+    <Box
+      sx={{
+        width: '100%',
+        canvas: {
           width: '100%',
-          canvas: {
-            width: '100%',
-          },
-        }}
-        ref={mountRef}
-      />
-      <Typography component='p' variant='body1'></Typography>
-    </Box>
+          objectFit: 'contain',
+        },
+      }}
+      ref={mountRef}
+    />
   )
 }

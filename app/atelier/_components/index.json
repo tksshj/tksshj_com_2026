@@ -5,6 +5,21 @@
     "description": "smoothstepでぼかす"
   },
   {
+    "path": "/atelier/bokeh-circle-02",
+    "title": "bokeh-circle-02",
+    "description": "smoothstepでぼかす、gnoiseで歪ませる"
+  },
+  {
+    "path": "/atelier/bokeh-circles-01",
+    "title": "bokeh-circles-01",
+    "description": "fragmentでcircle3つ"
+  },
+  {
+    "path": "/atelier/bokeh-circles-02",
+    "title": "bokeh-circles-02",
+    "description": "fragmentでcircle4つ"
+  },
+  {
     "path": "/atelier/canvas",
     "title": "canvas",
     "description": ""
@@ -20,11 +35,6 @@
     "description": ""
   },
   {
-    "path": "/atelier/fragment-bokeh-01",
-    "title": "fragment-bokeh-01",
-    "description": ""
-  },
-  {
     "path": "/atelier/fragment-bokeh-02",
     "title": "fragment-bokeh-02",
     "description": ""
@@ -35,14 +45,9 @@
     "description": ""
   },
   {
-    "path": "/atelier/noise-legacy",
-    "title": "noise-legacy",
-    "description": ""
-  },
-  {
     "path": "/atelier/palette",
     "title": "palette",
-    "description": ""
+    "description": "MUIのpalette"
   },
   {
     "path": "/atelier/plane-geometry",
@@ -100,6 +105,21 @@
     "description": "極座標、sinで歪ませる"
   },
   {
+    "path": "/atelier/polar-coordinates-03",
+    "title": "polar-coordinates-03",
+    "description": "極座標、gnoiseで歪ませる"
+  },
+  {
+    "path": "/atelier/random-hash",
+    "title": "random-hash",
+    "description": "リアルタイムグラフィクスの数学のビット演算を使ったハッシュ関数"
+  },
+  {
+    "path": "/atelier/random-legacy",
+    "title": "random-legacy",
+    "description": "リアルタイムグラフィクスの数学の疑似乱数"
+  },
+  {
     "path": "/atelier/scroll",
     "title": "scroll",
     "description": ""
@@ -127,6 +147,6 @@
   {
     "path": "/atelier/typography",
     "title": "typography",
-    "description": ""
+    "description": "MUIのTypegraphy"
   }
 ]

@@ -1,5 +1,4 @@
 varying vec2 vUv;
-uniform vec2 uResolution;
 uniform float uTime;
 
 void main() {
