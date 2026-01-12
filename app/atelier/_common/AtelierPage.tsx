@@ -56,7 +56,7 @@ export default function AtelierPage({ children }: { children: ReactNode }) {
       <Box component='main'>{children}</Box>
       <Typography component='p' variant='body1' sx={{ margin: '64px 0 24px', textAlign: 'right' }}>
         <MuiLink href={githubUrl} target='_blank' rel='noopener noreferrer'>
-          GitHub
+          src
         </MuiLink>
       </Typography>
     </Container>
