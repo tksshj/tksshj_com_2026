@@ -11,6 +11,7 @@ import { ReactNode } from 'react'
 export default function AtelierPage({ children }: { children: ReactNode }) {
   const pathname = usePathname()
   const segments = pathname.split('/').filter(Boolean)
+  const githubUrl = `https://github.com/tksshj/tksshj_com_2026/tree/main/app${pathname}`
 
   return (
     <Container maxWidth='md'>
@@ -53,6 +54,11 @@ export default function AtelierPage({ children }: { children: ReactNode }) {
         </Breadcrumbs>
       </Box>
       <Box component='main'>{children}</Box>
+      <Typography component='p' variant='body1' sx={{ margin: '64px 0 24px', textAlign: 'right' }}>
+        <MuiLink href={githubUrl} target='_blank' rel='noopener noreferrer'>
+          GitHub
+        </MuiLink>
+      </Typography>
     </Container>
   )
 }

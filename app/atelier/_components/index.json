@@ -87,12 +87,12 @@
   {
     "path": "/atelier/points-snoise-01",
     "title": "points-snoise-01",
-    "description": ""
+    "description": "Simplex noiseでpointsを移動"
   },
   {
     "path": "/atelier/points-snoise-02",
     "title": "points-snoise-02",
-    "description": ""
+    "description": "Simplex noiseでpointsを移動"
   },
   {
     "path": "/atelier/polar-coordinates-01",
