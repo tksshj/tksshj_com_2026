@@ -30,13 +30,18 @@
     "description": ""
   },
   {
-    "path": "/atelier/controls",
-    "title": "controls",
-    "description": ""
+    "path": "/atelier/circles-01",
+    "title": "circles-01",
+    "description": "glslのstep, mix"
   },
   {
-    "path": "/atelier/fragment-bokeh-02",
-    "title": "fragment-bokeh-02",
+    "path": "/atelier/circles-02",
+    "title": "circles-02",
+    "description": "glslのclampでぼかす"
+  },
+  {
+    "path": "/atelier/controls",
+    "title": "controls",
     "description": ""
   },
   {
@@ -110,8 +115,13 @@
     "description": "極座標、gnoiseで歪ませる"
   },
   {
-    "path": "/atelier/random-hash",
-    "title": "random-hash",
+    "path": "/atelier/random-hash-01",
+    "title": "random-hash-01",
+    "description": "リアルタイムグラフィクスの数学のビット演算を使ったハッシュ関数"
+  },
+  {
+    "path": "/atelier/random-hash-02",
+    "title": "random-hash-02",
     "description": "リアルタイムグラフィクスの数学のビット演算を使ったハッシュ関数"
   },
   {
