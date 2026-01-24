@@ -1,4 +1,4 @@
 {
   "title": "canvas",
-  "description": ""
+  "description": "HTMLのcanvasに2d contextで描画"
 }

@@ -22,7 +22,7 @@
   {
     "path": "/atelier/canvas",
     "title": "canvas",
-    "description": ""
+    "description": "HTMLのcanvasに2d contextで描画"
   },
   {
     "path": "/atelier/canvas-texture",
@@ -37,12 +37,17 @@
   {
     "path": "/atelier/circles-02",
     "title": "circles-02",
-    "description": "glslのclampでぼかす"
+    "description": "glslのclamp"
   },
   {
     "path": "/atelier/circles-03",
     "title": "circles-03",
-    "description": "glslのclampでぼかす"
+    "description": "glslのstep"
+  },
+  {
+    "path": "/atelier/circles-04",
+    "title": "circles-04",
+    "description": "偶然できた"
   },
   {
     "path": "/atelier/controls",
