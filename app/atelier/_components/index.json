@@ -27,7 +27,7 @@
   {
     "path": "/atelier/canvas-texture",
     "title": "canvas-texture",
-    "description": ""
+    "description": "canvasに文字を書いてテクスチャにして表示"
   },
   {
     "path": "/atelier/circles-01",
@@ -40,9 +40,14 @@
     "description": "glslのclampでぼかす"
   },
   {
+    "path": "/atelier/circles-03",
+    "title": "circles-03",
+    "description": "glslのclampでぼかす"
+  },
+  {
     "path": "/atelier/controls",
     "title": "controls",
-    "description": ""
+    "description": "MUIのコントロール"
   },
   {
     "path": "/atelier/new-year-2026-01",

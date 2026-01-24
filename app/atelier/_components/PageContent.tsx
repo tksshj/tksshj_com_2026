@@ -14,7 +14,7 @@ export default function PageContent() {
             <Box
               component='li'
               sx={{
-                padding: '10px 16px',
+                padding: '12px 0',
                 display: { xs: 'block', sm: 'flex' },
                 alignItems: 'center',
                 gap: '8px',
