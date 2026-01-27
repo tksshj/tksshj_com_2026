@@ -25,10 +25,10 @@ export default function PageContent() {
               }}
             >
               <Typography component='h4' variant='h4' sx={{ flex: '0 0 256px' }}>
-                {item.title}
+                {item.basename}
               </Typography>
               <Typography component='p' variant='body1' sx={{ fontSize: { xs: '12px', sm: '14px' } }}>
-                {item.description}
+                {item.title}
               </Typography>
             </Box>
           </MuiLink>

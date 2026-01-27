@@ -140,8 +140,13 @@
     "description": "リアルタイムグラフィクスの数学の疑似乱数"
   },
   {
-    "path": "/atelier/screen",
-    "title": "screen",
+    "path": "/atelier/screen-01",
+    "title": "screen-01",
+    "description": "座標系を理解したかった"
+  },
+  {
+    "path": "/atelier/screen-02",
+    "title": "screen-02",
     "description": "座標系を理解したかった"
   },
   {

@@ -86,44 +86,47 @@ const theme = createTheme({
       styleOverrides: {
         h1: {
           fontSize: '1.8rem',
-          fontWeight: '600',
+          fontWeight: '300',
           lineHeight: 1.5,
         },
         h2: {
           fontSize: '1.5rem',
-          fontWeight: '600',
+          fontWeight: '300',
           lineHeight: 1.5,
         },
         h3: {
           fontSize: '1.3rem',
-          fontWeight: '600',
+          fontWeight: '300',
           lineHeight: 1.5,
         },
         h4: {
           fontSize: '1.1rem',
-          fontWeight: '600',
+          fontWeight: '300',
           lineHeight: 1.5,
         },
         h5: {
           fontSize: '1.0rem',
-          fontWeight: '600',
+          fontWeight: '300',
           lineHeight: 1.5,
         },
         h6: {
           fontSize: '0.8rem',
-          fontWeight: '600',
+          fontWeight: '300',
           lineHeight: 1.5,
         },
         body1: {
           fontSize: '1.0rem',
+          fontWeight: '300',
           lineHeight: 1.5,
         },
         body2: {
           fontSize: '0.85rem',
+          fontWeight: '300',
           lineHeight: 1.5,
         },
         caption: {
           fontSize: '0.7rem',
+          fontWeight: '300',
           lineHeight: 1.5,
         },
       },
