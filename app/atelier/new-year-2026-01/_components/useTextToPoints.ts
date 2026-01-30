@@ -7,9 +7,8 @@ const WIDTH = 1024
 const HEIGHT = 1024
 const FONTSIZE = 256
 const TARGET_POINTS = 5000
-const TEXT = '佳境'
 
-export default function useCanvasMaskPoints() {
+export default function useTextToPoints({ text }: { text: string }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const [points, setPoints] = useState<Vec3[]>([])
 
@@ -35,16 +34,7 @@ export default function useCanvasMaskPoints() {
       context.font = `${FONTSIZE}px "Hina Mincho", serif`
       context.textAlign = 'center'
       context.textBaseline = 'middle'
-
-      const chars = TEXT.split('')
-      const centerX = WIDTH / 2
-      const centerY = HEIGHT / 2
-      const lineHeight = FONTSIZE * 1.33333
-      const startY = centerY - ((chars.length - 1) * lineHeight) / 2 - HEIGHT * 0.075
-
-      chars.forEach((char, i) => {
-        context.fillText(char, centerX, startY + i * lineHeight)
-      })
+      context.fillText(text, WIDTH * 0.5, HEIGHT * 0.5)
 
       const imageData = context.getImageData(0, 0, WIDTH, HEIGHT)
       const data = imageData.data

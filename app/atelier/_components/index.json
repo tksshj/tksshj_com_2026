@@ -57,7 +57,7 @@
   {
     "path": "/atelier/new-year-2026-01",
     "title": "new-year-2026-01",
-    "description": ""
+    "description": "screen-04をgnoiseで移動"
   },
   {
     "path": "/atelier/palette",
@@ -87,7 +87,7 @@
   {
     "path": "/atelier/points-5184",
     "title": "points-5184",
-    "description": ""
+    "description": "VertexShaderで位置計算"
   },
   {
     "path": "/atelier/points-gnoise-01",
@@ -98,6 +98,11 @@
     "path": "/atelier/points-gnoise-02",
     "title": "points-gnoise-02",
     "description": ""
+  },
+  {
+    "path": "/atelier/points-gnoize-03",
+    "title": "points-gnoize-03",
+    "description": "screen-04をgnoiseで移動"
   },
   {
     "path": "/atelier/points-snoise-01",
@@ -157,7 +162,7 @@
   {
     "path": "/atelier/screen-04",
     "title": "screen-04",
-    "description": "カメラで調整"
+    "description": "points, canvas"
   },
   {
     "path": "/atelier/scroll",

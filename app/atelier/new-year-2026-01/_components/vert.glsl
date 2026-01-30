@@ -1,6 +1,5 @@
-precision mediump float;
-
-uniform float uPos;
+attribute float aIndex;
+uniform float uTime;
 
 vec2[4] diag = vec2[](
   vec2(0.70710678,0.70710678),
@@ -44,7 +43,11 @@ float gnoise21(vec2 p){
 }
 
 void main() {
-  vec2 uv = gl_PointCoord - 0.5;
-  if (length(uv) > 0.5) discard;
-  gl_FragColor = vec4(0.3, 0.38, 0.54, 0.125 + 0.875 * uPos * 0.5) * length(uv);
+  float noise = gnoise21(position.xy * uTime * 0.00015);
+  float noise2 = gnoise21(position.yx * uTime * 0.0002);
+  vec3 pos = vec3(position.x + noise * 3.0 - 1.5,
+                  position.y + noise2 * 3.0 - 1.5,
+                  0.0);
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+  gl_PointSize = 80.0 * noise * noise2;
 }

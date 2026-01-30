@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box'
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
-import useTextToPoints from './useTextToPoints'
 import VertexShader from './vert.glsl'
 
 const WIDTH = 1024
@@ -9,12 +8,8 @@ const HEIGHT = 1024
 
 export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoints: number }) {
   const mountRef = useRef<HTMLDivElement | null>(null)
-  const { canvas, points } = useTextToPoints({ text: 'dev' })
 
   useEffect(() => {
-    if (!canvas) {
-      return
-    }
     const mount = mountRef.current
     if (!mount) {
       return
@@ -55,27 +50,27 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
 
     const scene = new THREE.Scene()
 
-    // const material = new THREE.ShaderMaterial({
-    //   transparent: true,
-    //   vertexShader: `
-    //     varying vec2 vUv;
+    const material = new THREE.ShaderMaterial({
+      transparent: true,
+      vertexShader: `
+        varying vec2 vUv;
 
-    //     void main() {
-    //       vUv = position.xy;
-    //       gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-    //     }
-    //   `,
-    //   fragmentShader: `
-    //     varying vec2 vUv;
+        void main() {
+          vUv = position.xy;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        varying vec2 vUv;
 
-    //     void main() {
-    //       gl_FragColor = vec4(vec3(step(1.0, length(vUv))), 1.0);
-    //     }
-    //   `,
-    // })
-    // const geometry = new THREE.PlaneGeometry(aspect * 20.0, aspect * 20.0)
-    // const mesh = new THREE.Mesh(geometry, material)
-    // scene.add(mesh)
+        void main() {
+          gl_FragColor = vec4(vec3(step(1.0, length(vUv))), 1.0);
+        }
+      `,
+    })
+    const geometry = new THREE.PlaneGeometry(aspect * 20.0, aspect * 20.0)
+    const mesh = new THREE.Mesh(geometry, material)
+    scene.add(mesh)
 
     const positions = new Float32Array(cols * rows * 3)
     let idx = 0
@@ -111,11 +106,29 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
         },
       },
       vertexShader: VertexShader,
+
+      //  `
+      // void main() {
+
+      //     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      //     gl_PointSize = 16.0;
+      //   }
+      // `,
       fragmentShader: `
         uniform float uTime;
         uniform vec2 uResolution;
 
         void main() {
+          //  vec2 uv = vec2(0.0);
+          //  float aspect = uResolution.x / uResolution.y;
+          //  if (aspect >= 1.0) {
+          //    uv.x = (gl_PointCoord.x - 0.5) * aspect;
+          //    uv.y = gl_PointCoord.y - 0.5;
+          //  } else {
+          //   uv.x = gl_PointCoord.x - 0.5;
+          //   uv.y = (gl_PointCoord.y - 0.5) / aspect;
+          // }
+
           float aspect = uResolution.x / uResolution.y;
           vec2 uv = gl_PointCoord - 0.5;
           vec2 scale = (aspect >= 1.0)
@@ -131,37 +144,9 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
         }
       `,
     })
+
     const pointsMesh = new THREE.Points(pointsGeometry, pointsMaterial)
     scene.add(pointsMesh)
-
-    const texture = new THREE.CanvasTexture(canvas)
-    const textureMaterial = new THREE.ShaderMaterial({
-      uniforms: {
-        uTexture: { value: texture },
-        uPos: { value: 0 },
-      },
-      vertexShader: `
-        varying vec2 vUv;
-
-        void main() {
-          vUv = position.xy * 0.5 + 0.5;
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        }
-      `,
-      fragmentShader: `
-        uniform sampler2D uTexture;
-        uniform float uPos;
-        varying vec2 vUv;
-
-        void main() {
-          vec4 color = texture2D(uTexture, vUv);
-          gl_FragColor = vec4(color.xyz, 0.3);
-        }
-      `,
-    })
-    const textureGeometry = new THREE.PlaneGeometry(aspect * 20.0, aspect * 20.0)
-    const textureMesh = new THREE.Mesh(textureGeometry, textureMaterial)
-    scene.add(textureMesh)
 
     let rafId = 0
     let running = true
@@ -179,11 +164,11 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
       running = false
       cancelAnimationFrame(rafId)
       renderer.dispose()
-      textureGeometry.dispose()
-      textureMaterial.dispose()
+      geometry.dispose()
+      material.dispose()
       mount.removeChild(renderer.domElement)
     }
-  }, [w, h, nPoints, canvas])
+  }, [w, h, nPoints])
 
   return (
     <Box
