@@ -5,7 +5,7 @@ import * as THREE from 'three'
 const WIDTH = 1024
 const HEIGHT = 1024
 
-export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoints: number }) {
+export default function Canvas({ w, h }: { w: number; h: number }) {
   const mountRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -14,21 +14,11 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
       return
     }
 
-    const aspect = w / h
-    const cols = Math.floor(Math.sqrt(nPoints * aspect))
-    const rows = Math.floor(nPoints / cols)
-
-    console.log(w)
-    console.log(h)
-    console.log(nPoints)
-    console.log(aspect)
-    console.log(cols)
-    console.log(rows)
-
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
     renderer.setSize(WIDTH, HEIGHT, false)
     mount.appendChild(renderer.domElement)
 
+    const aspect = w / h
     let left,
       right,
       top,
@@ -90,7 +80,7 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
       material.dispose()
       mount.removeChild(renderer.domElement)
     }
-  }, [w, h, nPoints])
+  }, [w, h])
 
   return (
     <Box

@@ -152,7 +152,12 @@
   {
     "path": "/atelier/screen-03",
     "title": "screen-03",
-    "description": "-1,1,aspectの世界"
+    "description": "カメラで調整"
+  },
+  {
+    "path": "/atelier/screen-04",
+    "title": "screen-04",
+    "description": "カメラで調整"
   },
   {
     "path": "/atelier/scroll",
