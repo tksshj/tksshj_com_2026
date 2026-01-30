@@ -147,7 +147,12 @@
   {
     "path": "/atelier/screen-02",
     "title": "screen-02",
-    "description": "pointsも同じ感じじゃやってけない"
+    "description": "pointsいれるとズレる"
+  },
+  {
+    "path": "/atelier/screen-03",
+    "title": "screen-03",
+    "description": "-1,1,aspectの世界"
   },
   {
     "path": "/atelier/scroll",
