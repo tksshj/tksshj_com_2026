@@ -6,9 +6,8 @@ export type Vec3 = { x: number; y: number; z: number }
 const WIDTH = 1024
 const HEIGHT = 1024
 const FONTSIZE = 256
-const TARGET_POINTS = 5000
 
-export default function useTextToPoints({ text }: { text: string }) {
+export default function useTextToPoints({ text, nPoints }: { text: string; nPoints: number }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const [points, setPoints] = useState<Vec3[]>([])
 
@@ -47,7 +46,7 @@ export default function useTextToPoints({ text }: { text: string }) {
           }
         }
       }
-      const ratio = TARGET_POINTS / raw.length
+      const ratio = nPoints / raw.length
       const sampled = raw.filter(() => Math.random() < ratio)
 
       const normalized: Vec3[] = sampled.map((p) => ({
@@ -64,7 +63,7 @@ export default function useTextToPoints({ text }: { text: string }) {
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [text, nPoints])
 
   return {
     canvas: canvasRef.current,

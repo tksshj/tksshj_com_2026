@@ -9,7 +9,7 @@ const HEIGHT = 1024
 
 export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoints: number }) {
   const mountRef = useRef<HTMLDivElement | null>(null)
-  const { canvas, points } = useTextToPoints({ text: 'dev' })
+  const { canvas, points: targetPoints } = useTextToPoints({ text: '2026', nPoints: nPoints })
 
   useEffect(() => {
     if (!canvas) {
@@ -30,6 +30,7 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
     console.log(aspect)
     console.log(cols)
     console.log(rows)
+    console.log(targetPoints.length)
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
     renderer.setSize(WIDTH, HEIGHT, false)
@@ -72,11 +73,21 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
         }
         positions[idx++] = worldX
         positions[idx++] = worldY
-        positions[idx++] = 0.0 // z
+        positions[idx++] = 0.0
       }
     }
+
+    const targetPositions = new Float32Array(positions.length)
+    for (let i = 0; i < positions.length / 3; i++) {
+      const p = targetPoints[i % targetPoints.length]
+      targetPositions[i * 3 + 0] = p.x
+      targetPositions[i * 3 + 1] = p.y
+      targetPositions[i * 3 + 2] = p.z
+    }
+
     const pointsGeometry = new THREE.BufferGeometry()
     pointsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+    pointsGeometry.setAttribute('targetPosition', new THREE.BufferAttribute(targetPositions, 3))
 
     const pointsMaterial = new THREE.ShaderMaterial({
       transparent: true,

@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box'
+import TWEEN from '@tweenjs/tween.js'
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import useTextToPoints from './useTextToPoints'
@@ -6,10 +7,11 @@ import VertexShader from './vert.glsl'
 
 const WIDTH = 1024
 const HEIGHT = 1024
+const DURATION = 3000
 
 export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoints: number }) {
   const mountRef = useRef<HTMLDivElement | null>(null)
-  const { canvas, points } = useTextToPoints({ text: 'dev' })
+  const { canvas, points: targetPoints } = useTextToPoints({ text: '2026', nPoints: nPoints })
 
   useEffect(() => {
     if (!canvas) {
@@ -30,6 +32,7 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
     console.log(aspect)
     console.log(cols)
     console.log(rows)
+    console.log(targetPoints.length)
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
     renderer.setSize(WIDTH, HEIGHT, false)
@@ -72,17 +75,28 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
         }
         positions[idx++] = worldX
         positions[idx++] = worldY
-        positions[idx++] = 0.0 // z
+        positions[idx++] = 0.0
       }
     }
+
+    const targetPositions = new Float32Array(positions.length)
+    for (let i = 0; i < positions.length / 3; i++) {
+      const p = targetPoints[i % targetPoints.length]
+      targetPositions[i * 3 + 0] = p.x
+      targetPositions[i * 3 + 1] = p.y
+      targetPositions[i * 3 + 2] = p.z
+    }
+
     const pointsGeometry = new THREE.BufferGeometry()
     pointsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+    pointsGeometry.setAttribute('targetPosition', new THREE.BufferAttribute(targetPositions, 3))
 
     const pointsMaterial = new THREE.ShaderMaterial({
       transparent: true,
       depthTest: false,
       depthWrite: false,
       uniforms: {
+        uPos: { value: 0 },
         uTime: { value: 0 },
         uResolution: {
           value: new THREE.Vector2(w, h),
@@ -116,7 +130,6 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
     const textureMaterial = new THREE.ShaderMaterial({
       uniforms: {
         uTexture: { value: texture },
-        uPos: { value: 0 },
       },
       vertexShader: `
         varying vec2 vUv;
@@ -128,7 +141,6 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
       `,
       fragmentShader: `
         uniform sampler2D uTexture;
-        uniform float uPos;
         varying vec2 vUv;
 
         void main() {
@@ -141,14 +153,40 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
     const textureMesh = new THREE.Mesh(textureGeometry, textureMaterial)
     scene.add(textureMesh)
 
+    let startTime = 0
+    let direction = 1
+    let completed = true
+    let rafNow = 0
+
+    const state = { value: 0 }
+    const tween = new TWEEN.Tween(state)
+      .to({ value: 1 }, DURATION)
+      .easing(TWEEN.Easing.Quartic.InOut)
+      .onUpdate(() => {
+        pointsMaterial.uniforms.uTime.value = rafNow
+        pointsMaterial.uniforms.uPos.value = direction == 1 ? state.value : 1.0 - state.value
+        renderer.render(scene, camera)
+      })
+      .onComplete(() => {
+        completed = true
+      })
+      .start(0)
+
     let rafId = 0
     let running = true
-    const animate = (timestamp: number) => {
+    const animate = (now: number) => {
       if (!running) {
         return
       }
-      pointsMaterial.uniforms.uTime.value = timestamp + 1000000
-      renderer.render(scene, camera)
+      rafNow = now
+      if (completed) {
+        direction = direction * -1
+        startTime = now
+        tween.start(0)
+        completed = false
+      } else {
+        tween.update(now - startTime)
+      }
       rafId = requestAnimationFrame(animate)
     }
     rafId = requestAnimationFrame(animate)
