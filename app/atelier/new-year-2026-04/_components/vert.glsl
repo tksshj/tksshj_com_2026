@@ -1,0 +1,58 @@
+attribute vec3 targetPosition;
+uniform float uPos;
+uniform float uTime;
+
+vec2[4] diag = vec2[](
+  vec2(0.70710678,0.70710678),
+  vec2(-0.70710678,0.70710678),
+  vec2(0.70710678,-0.70710678),
+  vec2(-0.70710678,-0.70710678)
+);
+
+vec2[4] axis = vec2[](
+  vec2(1, 0),
+  vec2(-1, 0),
+  vec2(0, 1),
+  vec2(0, -1)
+);
+
+uvec3 k = uvec3(0x456789abu, 0x6789ab45u, 0x89ab4567u);
+uvec3 u = uvec3(1, 2, 3);
+const uint UINT_MAX = 0xffffffffu;
+
+uvec2 uhash22(uvec2 n){
+  n ^= (n.yx << u.xy);
+  n ^= (n.yx >> u.xy);
+  n *= k.xy;
+  n ^= (n.yx << u.xy);
+  return n * k.xy;
+}
+
+float gnoise21(vec2 p){
+  vec2 n = floor(p);
+  vec2 f = fract(p);
+  float[4] v;
+  for (int j = 0; j < 2; j ++){
+    for (int i = 0; i < 2; i++){
+      uvec2 m = floatBitsToUint(n + vec2(i, j));
+      uint ind = (uhash22(m).x >> 30);
+      v[i+2*j] = dot(diag[ind], f - vec2(i, j));
+    }
+  }
+  f = f * f * f * (10.0 - 15.0 * f + 6.0 * f * f);
+  return 0.5 * mix(mix(v[0], v[1], f[0]), mix(v[2], v[3], f[0]), f[1]) + 0.5;
+}
+
+void main() {
+  // float noise = gnoise21(position.xy * uTime * 0.00015);
+  // float noise2 = gnoise21(position.yx * uTime * 0.0002);
+  // vec3 pos = vec3(position.x + noise * 3.0 - 1.5,
+  //                 position.y + noise2 * 3.0 - 1.5,
+  //                 0.0);
+  // gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+  // gl_PointSize = 80.0 * noise * noise2;
+
+  vec3 pos = mix(position, targetPosition, uPos);
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+  gl_PointSize = 16.0;
+}

@@ -57,7 +57,17 @@
   {
     "path": "/atelier/new-year-2026-01",
     "title": "new-year-2026-01",
-    "description": "screen-04をgnoiseで移動"
+    "description": "pointsと文字"
+  },
+  {
+    "path": "/atelier/new-year-2026-02",
+    "title": "new-year-2026-02",
+    "description": "pointsで文字を書く"
+  },
+  {
+    "path": "/atelier/new-year-2026-03",
+    "title": "new-year-2026-03",
+    "description": "pointsを集める"
   },
   {
     "path": "/atelier/palette",
