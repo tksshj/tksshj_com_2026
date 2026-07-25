@@ -18,11 +18,11 @@ const index: Index = [
     title: 'atelier/',
     description: 'お絵描き的なものです。',
   },
-  {
-    path: '/thought',
-    title: 'thought/',
-    description: 'テキストです。お気持ちです。',
-  },
+  // {
+  //   path: '/thought',
+  //   title: 'thought/',
+  //   description: 'テキストです。お気持ちです。',
+  // },
   {
     path: '/pages',
     title: 'pages/',
