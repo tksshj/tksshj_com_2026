@@ -1,64 +1,29 @@
 'use client'
+import Breadcrumbs from '@/app/_common/Breadcrumbs'
+import Header from '@/app/_common/Header'
 import Box from '@mui/material/Box'
-import Breadcrumbs from '@mui/material/Breadcrumbs'
 import Container from '@mui/material/Container'
 import MuiLink from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
 
 export default function AtelierPage({ children }: { children: ReactNode }) {
   const pathname = usePathname()
-  const segments = pathname.split('/').filter(Boolean)
   const githubUrl = `https://github.com/tksshj/tksshj_com_2026/tree/main/app${pathname}`
 
   return (
     <Container maxWidth='md'>
-      <Box
-        component='header'
-        sx={{
-          position: 'sticky',
-          left: '0',
-          top: '0',
-          height: '80px',
-          zIndex: '100',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          gap: '16px',
-          borderBottom: (theme) => `solid 1px ${theme.palette.divider}`,
-          backgroundColor: (theme) => theme.palette.background.default,
-        }}
-      >
-        <MuiLink component={Link} href='/' underline='none'>
-          <Typography component='h1' variant='h1' sx={{ fontWeight: '300' }}>
-            tksshj.com
-          </Typography>
-        </MuiLink>
-        <Breadcrumbs aria-label='breadcrumb'>
-          {segments.map((segment, index) => {
-            const href = '/' + segments.slice(0, index + 1).join('/')
-            const isLast = index === segments.length - 1
-
-            return isLast ? (
-              <Typography key={href} color='text.primary'>
-                {decodeURIComponent(segment)}
-              </Typography>
-            ) : (
-              <MuiLink key={href} component={Link} href={href} color='inherit'>
-                {decodeURIComponent(segment)}
-              </MuiLink>
-            )
-          })}
-        </Breadcrumbs>
+      <Header />
+      <Box component='main'>
+        <Breadcrumbs />
+        <Box>{children}</Box>
+        <Typography component='p' variant='body1' sx={{ margin: '64px 0 24px', textAlign: 'right' }}>
+          <MuiLink href={githubUrl} target='_blank' rel='noopener noreferrer'>
+            src
+          </MuiLink>
+        </Typography>
       </Box>
-      <Box component='main'>{children}</Box>
-      <Typography component='p' variant='body1' sx={{ margin: '64px 0 24px', textAlign: 'right' }}>
-        <MuiLink href={githubUrl} target='_blank' rel='noopener noreferrer'>
-          src
-        </MuiLink>
-      </Typography>
     </Container>
   )
 }

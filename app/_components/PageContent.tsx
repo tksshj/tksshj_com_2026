@@ -1,17 +1,20 @@
 'use client'
+import Header from '@/app/_common/Header'
 import Box from '@mui/material/Box'
-import { useEffect, useState } from 'react'
-import Canvas from '../atelier/new-year-2026-06/_components/Canvas'
+import Container from '@mui/material/Container'
+import MuiLink from '@mui/material/Link'
+import Link from 'next/link'
+import Canvas from '../atelier/polar-coordinates-02/_components/Canvas'
 
 export default function PageContent() {
-  const [w, setW] = useState(0)
-  const [h, setH] = useState(0)
-  const nPoints = 50
-
-  useEffect(() => {
-    setW(window.innerWidth * 0.2)
-    setH(window.innerHeight * 0.2)
-  }, [])
-
-  return <Box>{0 < w && 0 < h && <Canvas w={w} h={h} nPoints={nPoints * 0.01 * 8192} />}</Box>
+  return (
+    <Container maxWidth='md'>
+      <Header />
+      <Box component='main'>
+        <MuiLink component={Link} href='./atelier/polar-coordinates-02'>
+          <Canvas />
+        </MuiLink>
+      </Box>
+    </Container>
+  )
 }
