@@ -1,10 +1,7 @@
 'use client'
 import theme, { hepeuNavy } from '@/app/_common/theme'
 import Box from '@mui/material/Box'
-import Typography, { TypographyProps } from '@mui/material/Typography'
-
-const textEn = 'This directory contains source code for experiments, research, learning, and works in progress.'
-const textJa = 'このディレクトリは、実験・研究・学習・制作途中のソースコードを置くための場所です。'
+import Typography from '@mui/material/Typography'
 
 const items = [
   { color: theme.palette.primary.main, text: 'theme.palette.primary.main' },
@@ -32,23 +29,6 @@ const items = [
   { color: hepeuNavy[700], text: 'hepeuNavy[700]' },
   { color: hepeuNavy[800], text: 'hepeuNavy[800]' },
   { color: hepeuNavy[900], text: 'hepeuNavy[900]' },
-
-  // background: {
-  //   default: hepeuNavy[100],
-  //   paper: '#ffffff',
-  // },
-  // text: {
-  //   primary: hepeuNavy[800],
-  //   secondary: hepeuNavy[600],
-  //   disabled: hepeuNavy[400],
-  // },
-  // divider: hepeuNavy[200],
-  // action: {
-  //   hover: hepeuNavy[50],
-  //   selected: 'rgba(0,0,0,0.08)',
-  //   disabled: 'rgba(0,0,0,0.26)',
-  //   disabledBackground: alpha(hepeuNavy[100], 0.75),
-  // },
 ]
 
 export default function PageContent() {
@@ -79,27 +59,3 @@ export default function PageContent() {
     </Box>
   )
 }
-
-// { component: 'h1', variant: 'h1' },
-// { component: 'h2', variant: 'h2' },
-// { component: 'h3', variant: 'h3' },
-// { component: 'h4', variant: 'h4' },
-// { component: 'h5', variant: 'h5' },
-// { component: 'h6', variant: 'h6' },
-// { component: 'p', variant: 'body1' },
-// { component: 'p', variant: 'body2' },
-// { component: 'p', variant: 'caption' },
-
-// <Typography
-//   component='h3'
-//   variant='h3'
-//   sx={{ margin: '0 0 16px', color: (theme) => theme.palette.accent.main }}
-// >
-//   component: {item.component}, variant: {item.variant}
-// </Typography>
-// <Typography component={item.component} variant={item.variant} sx={{ margin: '0 0 16px' }}>
-//   {textEn}
-// </Typography>
-// <Typography component={item.component} variant={item.variant}>
-//   {textJa}
-// </Typography>

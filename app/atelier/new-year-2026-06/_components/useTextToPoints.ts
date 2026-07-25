@@ -66,7 +66,7 @@ export default function useTextToPoints({ text, nPoints }: { text: string; nPoin
   }, [text, nPoints])
 
   return {
-    canvas: canvasRef.current,
-    points: points,
+    canvasRef,
+    points,
   }
 }

@@ -9,10 +9,10 @@ const HEIGHT = 1024
 
 export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoints: number }) {
   const mountRef = useRef<HTMLDivElement | null>(null)
-  const { canvas, points: targetPoints } = useTextToPoints({ text: '2026', nPoints: nPoints })
+  const { canvasRef, points } = useTextToPoints({ text: '2026', nPoints: nPoints })
 
   useEffect(() => {
-    if (!canvas) {
+    if (!canvasRef.current) {
       return
     }
     const mount = mountRef.current
@@ -30,7 +30,7 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
     console.log(aspect)
     console.log(cols)
     console.log(rows)
-    console.log(targetPoints.length)
+    console.log(points.length)
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
     renderer.setSize(WIDTH, HEIGHT, false)
@@ -79,7 +79,7 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
 
     const targetPositions = new Float32Array(positions.length)
     for (let i = 0; i < positions.length / 3; i++) {
-      const p = targetPoints[i % targetPoints.length]
+      const p = points[i % points.length]
       targetPositions[i * 3 + 0] = p.x
       targetPositions[i * 3 + 1] = p.y
       targetPositions[i * 3 + 2] = p.z
@@ -123,7 +123,7 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
     const pointsMesh = new THREE.Points(pointsGeometry, pointsMaterial)
     scene.add(pointsMesh)
 
-    const texture = new THREE.CanvasTexture(canvas)
+    const texture = new THREE.CanvasTexture(canvasRef.current)
     const textureMaterial = new THREE.ShaderMaterial({
       uniforms: {
         uTexture: { value: texture },
@@ -172,7 +172,7 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
       textureMaterial.dispose()
       mount.removeChild(renderer.domElement)
     }
-  }, [w, h, nPoints, canvas])
+  }, [w, h, nPoints, canvasRef, points])
 
   return (
     <Box

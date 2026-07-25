@@ -21,10 +21,10 @@ function shuffleIndices(n: number) {
 
 export default function Canvas({ posRef }: { posRef: RefObject<number> }) {
   const mountRef = useRef<HTMLDivElement | null>(null)
-  const { canvas, points } = useKakyoPoints()
+  const { canvasRef, points } = useKakyoPoints()
 
   useEffect(() => {
-    if (!canvas || points.length <= 0) {
+    if (!canvasRef.current || points.length <= 0) {
       return
     }
     const mount = mountRef.current
@@ -46,7 +46,7 @@ export default function Canvas({ posRef }: { posRef: RefObject<number> }) {
 
     const scene = new THREE.Scene()
 
-    const texture = new THREE.CanvasTexture(canvas)
+    const texture = new THREE.CanvasTexture(canvasRef.current)
     texture.minFilter = THREE.LinearFilter
     texture.magFilter = THREE.LinearFilter
     texture.needsUpdate = true
@@ -169,7 +169,7 @@ export default function Canvas({ posRef }: { posRef: RefObject<number> }) {
       pointsMaterial.dispose()
       mount.removeChild(renderer.domElement)
     }
-  }, [canvas, points, posRef])
+  }, [canvasRef, points, posRef])
 
   return (
     <Box

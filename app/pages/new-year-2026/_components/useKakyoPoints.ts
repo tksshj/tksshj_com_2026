@@ -62,8 +62,8 @@ export default function useCanvasMaskPoints() {
       const sampled = raw.filter(() => Math.random() < ratio)
 
       const normalized: Vec3[] = sampled.map((p) => {
-        let x = (p.x / width) * 2 - 1
-        let y = -(p.y / height) * 2 + 1
+        const x = (p.x / width) * 2 - 1
+        const y = -(p.y / height) * 2 + 1
         return { x, y, z: 0 }
       })
 
@@ -78,7 +78,7 @@ export default function useCanvasMaskPoints() {
   }, [])
 
   return {
-    canvas: canvasRef.current,
+    canvasRef: canvasRef,
     points: points,
   }
 }

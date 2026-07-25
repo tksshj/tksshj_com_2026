@@ -11,10 +11,10 @@ const DURATION = 3000
 
 export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoints: number }) {
   const mountRef = useRef<HTMLDivElement | null>(null)
-  const { canvas, points: targetPoints } = useTextToPoints({ text: '2026', nPoints: nPoints })
+  const { canvasRef, points: targetPoints } = useTextToPoints({ text: '2026', nPoints: nPoints })
 
   useEffect(() => {
-    if (!canvas) {
+    if (!canvasRef.current) {
       return
     }
     const mount = mountRef.current
@@ -126,7 +126,7 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
     const pointsMesh = new THREE.Points(pointsGeometry, pointsMaterial)
     scene.add(pointsMesh)
 
-    const texture = new THREE.CanvasTexture(canvas)
+    const texture = new THREE.CanvasTexture(canvasRef.current)
     const textureMaterial = new THREE.ShaderMaterial({
       uniforms: {
         uTexture: { value: texture },
@@ -199,7 +199,7 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
       textureMaterial.dispose()
       mount.removeChild(renderer.domElement)
     }
-  }, [w, h, nPoints, canvas])
+  }, [w, h, nPoints, canvasRef, targetPoints])
 
   return (
     <Box

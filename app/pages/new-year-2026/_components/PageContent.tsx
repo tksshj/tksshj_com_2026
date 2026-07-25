@@ -73,7 +73,7 @@ export default function PageContent() {
           top: '0',
           width: '100vw',
           height: '100vh',
-          zIndex: '100',
+          zIndex: '99',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',

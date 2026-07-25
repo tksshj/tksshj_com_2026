@@ -64,10 +64,10 @@ export default function useTextToPoints({ text }: { text: string }) {
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [text])
 
   return {
-    canvas: canvasRef.current,
-    points: points,
+    canvasRef,
+    points,
   }
 }

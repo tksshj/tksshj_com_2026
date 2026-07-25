@@ -25,10 +25,10 @@ function shuffleIndices(n: number) {
 
 export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoints: number }) {
   const mountRef = useRef<HTMLDivElement | null>(null)
-  const { canvas, points: targetPoints } = useTextToPoints({ text: '2026', nPoints: nPoints })
+  const { canvasRef, points: targetPoints } = useTextToPoints({ text: '2026', nPoints: nPoints })
 
   useEffect(() => {
-    if (!canvas) {
+    if (!canvasRef.current) {
       return
     }
     const mount = mountRef.current
@@ -142,33 +142,6 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
     const pointsMesh = new THREE.Points(pointsGeometry, pointsMaterial)
     scene.add(pointsMesh)
 
-    // const texture = new THREE.CanvasTexture(canvas)
-    // const textureMaterial = new THREE.ShaderMaterial({
-    //   uniforms: {
-    //     uTexture: { value: texture },
-    //   },
-    //   vertexShader: `
-    //     varying vec2 vUv;
-
-    //     void main() {
-    //       vUv = position.xy * 0.5 + 0.5;
-    //       gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-    //     }
-    //   `,
-    //   fragmentShader: `
-    //     uniform sampler2D uTexture;
-    //     varying vec2 vUv;
-
-    //     void main() {
-    //       vec4 color = texture2D(uTexture, vUv);
-    //       gl_FragColor = vec4(color.xyz, 1.0);
-    //     }
-    //   `,
-    // })
-    // const textureGeometry = new THREE.PlaneGeometry(aspect * 20.0, aspect * 20.0)
-    // const textureMesh = new THREE.Mesh(textureGeometry, textureMaterial)
-    // scene.add(textureMesh)
-
     let startTime = 0
     let direction = 1
     let completed = true
@@ -215,7 +188,7 @@ export default function Canvas({ w, h, nPoints }: { w: number; h: number; nPoint
       // textureMaterial.dispose()
       mount.removeChild(renderer.domElement)
     }
-  }, [w, h, nPoints, canvas])
+  }, [w, h, nPoints, canvasRef, targetPoints])
 
   return (
     <Box

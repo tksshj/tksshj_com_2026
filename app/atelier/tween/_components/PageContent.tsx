@@ -21,7 +21,7 @@ export default function PageContent() {
       .start(0)
 
     let raf = 0
-    let startTime = performance.now()
+    const startTime = performance.now()
     const draw = (now: number) => {
       const elapsed = (now - startTime) % 10000
       tween.update(elapsed)
