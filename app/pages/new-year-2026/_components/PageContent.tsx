@@ -79,7 +79,7 @@ export default function PageContent() {
           justifyContent: 'center',
         }}
       >
-        <ArrowDownwardIcon sx={{ fontSize: '20vw', color: 'white' }} />
+        <ArrowDownwardIcon sx={{ fontSize: '20vw', color: (theme) => theme.palette.text.primary }} />
       </Box>
 
       <span
