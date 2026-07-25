@@ -10,17 +10,17 @@ import { ReactNode } from 'react'
 export default function PagesPage({ children }: { children: ReactNode }) {
   return (
     <Box>
-      <Container maxWidth={false}>
-        <Box
-          component='header'
-          sx={{
-            position: 'sticky',
-            left: '0',
-            top: '0',
-            height: '64px',
-            zIndex: '100',
-          }}
-        >
+      <Container
+        maxWidth={false}
+        sx={{
+          position: 'sticky',
+          left: '0',
+          top: '0',
+          height: '64px',
+          zIndex: '100',
+        }}
+      >
+        <Box component='header'>
           <MuiLink component={Link} href='/' underline='none'>
             <Typography component='div' variant='h1' sx={{ fontWeight: '300', lineHeight: '64px' }}>
               tksshj.com

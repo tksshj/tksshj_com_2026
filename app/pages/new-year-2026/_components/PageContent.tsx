@@ -1,7 +1,7 @@
 'use client'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import Box from '@mui/material/Box'
-import { useEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Canvas from './Canvas'
 
 export default function PageContent() {
@@ -9,6 +9,9 @@ export default function PageContent() {
   const lvhRef = useRef(0)
   const posRef = useRef(0)
   const iconContainerRef = useRef<HTMLDivElement | null>(null)
+  const canvasContainerRef = useRef<HTMLDivElement | null>(null)
+  const [canvasKey, setCanvasKey] = useState(Date.now())
+  const resizeTimerRef = useRef<number | null>(null)
 
   const handleScroll = () => {
     if (lvhRef.current == 0) {
@@ -26,8 +29,32 @@ export default function PageContent() {
     lvhRef.current = scrollableHeight / nLvh
 
     window.addEventListener('scroll', handleScroll)
+    handleScroll()
     return () => {
       window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  useLayoutEffect(() => {
+    const element = canvasContainerRef.current
+    if (!element) {
+      return
+    }
+    const observer = new ResizeObserver(() => {
+      if (resizeTimerRef.current !== null) {
+        window.clearTimeout(resizeTimerRef.current)
+      }
+      resizeTimerRef.current = window.setTimeout(() => {
+        setCanvasKey(Date.now())
+        resizeTimerRef.current = null
+      }, 150)
+    })
+    observer.observe(element)
+    return () => {
+      observer.disconnect()
+      if (resizeTimerRef.current !== null) {
+        window.clearTimeout(resizeTimerRef.current)
+      }
     }
   }, [])
 
@@ -66,6 +93,7 @@ export default function PageContent() {
         佳境
       </span>
       <Box
+        ref={canvasContainerRef}
         sx={{
           position: 'sticky',
           left: '0',
@@ -75,7 +103,7 @@ export default function PageContent() {
           overflow: 'hidden',
         }}
       >
-        <Canvas posRef={posRef} />
+        <Canvas key={canvasKey} posRef={posRef} />
       </Box>
     </Box>
   )
