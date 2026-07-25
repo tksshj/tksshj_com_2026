@@ -15,14 +15,16 @@ export default function AtelierPage({ children }: { children: ReactNode }) {
   return (
     <Container maxWidth='md'>
       <Header />
-      <Box component='main'>
+      <Box component='main' sx={{ margin: '0 0 64px' }}>
         <Breadcrumbs />
         <Box>{children}</Box>
-        <Typography component='p' variant='body1' sx={{ margin: '64px 0 24px', textAlign: 'right' }}>
-          <MuiLink href={githubUrl} target='_blank' rel='noopener noreferrer'>
-            src
-          </MuiLink>
-        </Typography>
+        {pathname != '/atelier' && (
+          <Typography component='p' variant='body1' sx={{ margin: '64px 0 0', textAlign: 'right' }}>
+            <MuiLink href={githubUrl} target='_blank' rel='noopener noreferrer'>
+              src
+            </MuiLink>
+          </Typography>
+        )}
       </Box>
     </Container>
   )

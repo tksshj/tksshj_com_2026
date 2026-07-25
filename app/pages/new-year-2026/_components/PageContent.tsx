@@ -1,9 +1,6 @@
 'use client'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import Box from '@mui/material/Box'
-import MuiLink from '@mui/material/Link'
-import Typography from '@mui/material/Typography'
-import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import Canvas from './Canvas'
 
@@ -42,24 +39,6 @@ export default function PageContent() {
       }}
     >
       <Box
-        component='header'
-        sx={{
-          position: 'fixed',
-          left: '0',
-          top: '0',
-          padding: '24px',
-          paddingTop: `calc(24px + env(safe-area-inset-top))`,
-          zIndex: '100',
-        }}
-      >
-        <Typography component='h1' variant='h1' sx={{ fontSize: '32px' }}>
-          <MuiLink component={Link} href='/lightflows/015' underline='none'>
-            tksshj.com
-          </MuiLink>
-        </Typography>
-      </Box>
-
-      <Box
         ref={iconContainerRef}
         sx={{
           position: 'fixed',
@@ -73,21 +52,7 @@ export default function PageContent() {
           justifyContent: 'center',
         }}
       >
-        <ArrowDownwardIcon
-          sx={{
-            fontSize: '20vw',
-            color: 'white',
-            // animation: 'blink-gap 2.5s infinite',
-            // '@keyframes blink-gap': {
-            //   '0%': { opacity: 0 },
-            //   '10%': { opacity: 1 },
-            //   '20%': { opacity: 0 },
-            //   '30%': { opacity: 1 },
-            //   '50%': { opacity: 0 },
-            //   '100%': { opacity: 0 },
-            // },
-          }}
-        />
+        <ArrowDownwardIcon sx={{ fontSize: '20vw', color: 'white' }} />
       </Box>
 
       <span

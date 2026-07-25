@@ -3,29 +3,31 @@ require "fileutils"
 
 PROJECT_DIR = Pathname(__dir__).expand_path.parent
 
-def atelier
-  atelier_dir = PROJECT_DIR / "app" / "atelier"
-  index_json_path = atelier_dir / "_components" / "index.json"
+def atelier_pages
+  %w[atelier pages].each do |page|
+    index_dir = PROJECT_DIR / "app" / page
+    index_json_path = index_dir / "_components" / "index.json"
 
-  index = []
+    index = []
 
-  atelier_dir
-    .children
-    .select { |pn| pn.directory? && !pn.basename.to_s.start_with?("_") }
-    .sort
-    .each do |item|
-      components_dir = item / "_components"
-      FileUtils.mkdir_p(components_dir)
-      json_path = components_dir / "metadata.json"
-      json = { title: "", description: "" }
-      json = JSON.parse(File.read(json_path), symbolize_names: true) if File.file?(json_path)
-      json[:title] = item.basename.to_s
-      json_path.write JSON.pretty_generate(json)
+    index_dir
+      .children
+      .select { |pn| pn.directory? && !pn.basename.to_s.start_with?("_") }
+      .sort
+      .each do |item|
+        components_dir = item / "_components"
+        FileUtils.mkdir_p(components_dir)
+        json_path = components_dir / "metadata.json"
+        json = { title: "", description: "" }
+        json = JSON.parse(File.read(json_path), symbolize_names: true) if File.file?(json_path)
+        json[:title] = item.basename.to_s
+        json_path.write JSON.pretty_generate(json)
 
-      index << { path: "/atelier/#{item.basename}", title: json[:title], description: json[:description] }
-    end
+        index << { path: "/#{page}/#{item.basename}", title: json[:title], description: json[:description] }
+      end
 
-  index_json_path.write JSON.pretty_generate(index)
+    index_json_path.write JSON.pretty_generate(index)
+  end
 end
 
 def thoughts
@@ -51,17 +53,17 @@ def thoughts
       end
       FileUtils.mkdir_p(components_dir)
       json_path = components_dir / "metadata.json"
-      json = { basename: "", title: "" }
+      json = { title: "", description: "" }
       json = JSON.parse(File.read(json_path), symbolize_names: true) if File.file?(json_path)
-      json[:basename] = item.basename.to_s
       json[:title] = title
+      json[:description] = item.basename.to_s
       json_path.write JSON.pretty_generate(json)
 
-      index << { path: "/thoughts/#{item.basename}", basename: json[:basename], title: json[:title] }
+      index << { path: "/thoughts/#{item.basename}", title: json[:title], description: json[:description] }
     end
 
   index_json_path.write JSON.pretty_generate(index)
 end
 
-atelier
+atelier_pages
 thoughts

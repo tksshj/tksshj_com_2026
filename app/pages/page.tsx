@@ -1,15 +1,15 @@
-import ThoughtPage from '@/app/thoughts/_common/ThoughtPage'
+import AtelierPage from '@/app/atelier/_common/AtelierPage'
 import type { Metadata } from 'next'
 import PageContent from './_components/PageContent'
 
 export const metadata: Metadata = {
-  title: 'thoughts | tksshj.com',
+  title: 'pages | tksshj.com',
 }
 
 export default function page() {
   return (
-    <ThoughtPage>
+    <AtelierPage>
       <PageContent />
-    </ThoughtPage>
+    </AtelierPage>
   )
 }
