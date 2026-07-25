@@ -9,18 +9,23 @@ import Link from 'next/link'
 
 const index: Index = [
   {
+    path: '/pages/new-year-2026',
+    title: 'new-year-2026',
+    description: '書き初めです。',
+  },
+  {
     path: '/atelier',
-    title: 'atelier',
+    title: 'atelier/',
     description: 'お絵描き的なものです。',
   },
   {
     path: '/thought',
-    title: 'thought',
+    title: 'thought/',
     description: 'テキストです。お気持ちです。',
   },
   {
     path: '/pages',
-    title: 'pages',
+    title: 'pages/',
     description: 'それ以外のいろいろです。',
   },
 ]

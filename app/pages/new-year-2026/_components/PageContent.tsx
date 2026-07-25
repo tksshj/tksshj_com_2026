@@ -10,7 +10,7 @@ export default function PageContent() {
   const posRef = useRef(0)
   const iconContainerRef = useRef<HTMLDivElement | null>(null)
   const canvasContainerRef = useRef<HTMLDivElement | null>(null)
-  const [canvasKey, setCanvasKey] = useState(Date.now())
+  const [canvasKey, setCanvasKey] = useState(0)
   const resizeTimerRef = useRef<number | null>(null)
 
   const handleScroll = () => {
@@ -45,7 +45,7 @@ export default function PageContent() {
         window.clearTimeout(resizeTimerRef.current)
       }
       resizeTimerRef.current = window.setTimeout(() => {
-        setCanvasKey(Date.now())
+        setCanvasKey((current) => current + 1)
         resizeTimerRef.current = null
       }, 150)
     })
@@ -103,7 +103,7 @@ export default function PageContent() {
           overflow: 'hidden',
         }}
       >
-        <Canvas key={canvasKey} posRef={posRef} />
+        {0 < canvasKey && <Canvas key={canvasKey} posRef={posRef} />}
       </Box>
     </Box>
   )

@@ -52,11 +52,11 @@ export default function PageContent() {
         </Typography>
       </Box>
       <Box sx={{ ...rowSx }}>
-        <Button onClick={(e) => console.log('clicked')}>text</Button>
-        <Button variant='contained' onClick={(e) => console.log('clicked')}>
+        <Button onClick={() => console.log('clicked')}>text</Button>
+        <Button variant='contained' onClick={() => console.log('clicked')}>
           contained
         </Button>
-        <Button variant='outlined' onClick={(e) => console.log('clicked')}>
+        <Button variant='outlined' onClick={() => console.log('clicked')}>
           outlined
         </Button>
       </Box>
