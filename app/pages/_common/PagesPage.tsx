@@ -9,27 +9,29 @@ import { ReactNode } from 'react'
 
 export default function PagesPage({ children }: { children: ReactNode }) {
   return (
-    <Container maxWidth={false}>
-      <Box
-        component='header'
-        sx={{
-          position: 'sticky',
-          left: '0',
-          top: '0',
-          height: '64px',
-          zIndex: '100',
-        }}
-      >
-        <MuiLink component={Link} href='/' underline='none'>
-          <Typography component='div' variant='h1' sx={{ fontWeight: '300', lineHeight: '64px' }}>
-            tksshj.com
-          </Typography>
-        </MuiLink>
-        <Breadcrumbs />
-      </Box>
+    <Box>
+      <Container maxWidth={false}>
+        <Box
+          component='header'
+          sx={{
+            position: 'sticky',
+            left: '0',
+            top: '0',
+            height: '64px',
+            zIndex: '100',
+          }}
+        >
+          <MuiLink component={Link} href='/' underline='none'>
+            <Typography component='div' variant='h1' sx={{ fontWeight: '300', lineHeight: '64px' }}>
+              tksshj.com
+            </Typography>
+          </MuiLink>
+          <Breadcrumbs />
+        </Box>
+      </Container>
       <Box component='main' sx={{ position: 'relative', margin: '-64px 0 0' }}>
         <Box sx={{ position: 'relative' }}>{children}</Box>
       </Box>
-    </Container>
+    </Box>
   )
 }

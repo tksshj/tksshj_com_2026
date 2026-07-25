@@ -66,7 +66,6 @@ export default function PageContent() {
         佳境
       </span>
       <Box
-        component='main'
         sx={{
           position: 'sticky',
           left: '0',

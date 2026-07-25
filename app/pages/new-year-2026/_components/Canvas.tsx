@@ -31,13 +31,14 @@ export default function Canvas({ posRef }: { posRef: RefObject<number> }) {
     if (!mount) {
       return
     }
-    const width = mount.clientHeight
-    const height = width
+    const width = mount.clientWidth
+    const height = mount.clientHeight
 
     const renderer = new THREE.WebGLRenderer({ alpha: false, antialias: true })
     renderer.setSize(width, height)
     renderer.setPixelRatio(window.devicePixelRatio)
-    renderer.setClearColor(0xffffff, 1)
+    // renderer.setClearColor(0xffffff, 1)
+    renderer.setClearColor(0xe4e7ec, 1)
     mount.appendChild(renderer.domElement)
 
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.01, 10)
@@ -127,6 +128,7 @@ export default function Canvas({ posRef }: { posRef: RefObject<number> }) {
         uPos: { value: 0 },
         uGridW: { value: gridSize },
         uGridH: { value: gridSize },
+        uResolution: { value: new THREE.Vector2(width, height) },
       },
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
@@ -188,7 +190,15 @@ export default function Canvas({ posRef }: { posRef: RefObject<number> }) {
           justifyContent: 'center',
         }}
       >
-        <Box sx={{ aspectRatio: 1, height: '100%', canvas: { width: '100%' } }} ref={mountRef} />
+        <Box
+          sx={{
+            // aspectRatio: 1,
+            width: '100%',
+            height: '100%',
+            canvas: { width: '100%' },
+          }}
+          ref={mountRef}
+        />
       </Box>
     </Box>
   )

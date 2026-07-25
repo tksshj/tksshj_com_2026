@@ -6,6 +6,7 @@ uniform float uTime;
 uniform float uPos;
 uniform float uGridW;
 uniform float uGridH;
+uniform vec2 uResolution;
 
 vec2[4] diag = vec2[](
   vec2(0.70710678,0.70710678),
@@ -48,19 +49,15 @@ float gnoise21(vec2 p){
   return 0.5 * mix(mix(v[0], v[1], f[0]), mix(v[2], v[3], f[0]), f[1]) + 0.5;
 }
 
-
 vec2 flow(vec2 p, float t) {
   float n1 = sin(p.y * 3.0 + t * 0.6);
   float n2 = cos(p.x * 3.0 - t * 0.7);
 
   float a = (n1 + n2) * 3.14159;
 
-  return vec2(
-    cos(a),
-    sin(a)
-  );
+  return vec2(cos(a), sin(a));
 }
-// index → 正方グリッド
+
 vec3 gridFromIndex(float i) {
   float x = mod(i, uGridW);
   float y = floor(i / uGridW);
@@ -70,7 +67,16 @@ vec3 gridFromIndex(float i) {
     y / (uGridH - 1.0)
   );
 
-  return vec3(uv * 2.0 - 1.0, 0.0);
+  vec2 p = uv * 2.0 - 1.0;
+  float aspect = uResolution.x / uResolution.y;
+
+  if (aspect >= 1.0) {
+    p.x *= aspect;
+  } else {
+    p.y /= aspect;
+  }
+
+  return vec3(p, 0.0);
 }
 
 void main() {
