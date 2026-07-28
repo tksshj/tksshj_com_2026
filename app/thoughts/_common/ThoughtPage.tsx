@@ -26,6 +26,7 @@ export default function ThoughtPage({ children }: { children: ReactNode }) {
               fontWeight: '300',
               lineHeight: '2em',
               letterSpacing: '0.01em',
+              textAlign: 'justify',
             },
           },
         }}

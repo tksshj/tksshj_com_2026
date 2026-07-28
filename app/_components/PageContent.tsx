@@ -9,6 +9,11 @@ import Link from 'next/link'
 
 const index: Index = [
   {
+    path: '/pages/hepeu-2026',
+    title: 'hepeu-2026',
+    description: 'hepeu.comのTOPページです。',
+  },
+  {
     path: '/pages/new-year-2026',
     title: 'new-year-2026',
     description: '書き初めです。',
@@ -18,11 +23,11 @@ const index: Index = [
     title: 'atelier/',
     description: 'お絵描き的なものです。',
   },
-  // {
-  //   path: '/thought',
-  //   title: 'thought/',
-  //   description: 'テキストです。お気持ちです。',
-  // },
+  {
+    path: '/thoughts',
+    title: 'thoughts/',
+    description: 'テキストです。お気持ちです。',
+  },
   {
     path: '/pages',
     title: 'pages/',
