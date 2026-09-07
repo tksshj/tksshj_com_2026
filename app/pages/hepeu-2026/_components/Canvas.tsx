@@ -1,20 +1,13 @@
 'use client'
-import { isMobile } from '@/app/_common/utils'
+import { useIsMobile } from '@/app/_common/utils'
 import Box from '@mui/material/Box'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import fragmentShader from './frag.glsl'
 import vertexShader from './vert.glsl'
 
-export function isMobileByUserAgent() {
-  if (typeof navigator === 'undefined') {
-    return false
-  }
-  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-}
-
 export default function Canvas() {
-  const mobile = isMobile()
+  const mobile = useIsMobile()
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
@@ -104,7 +97,7 @@ export default function Canvas() {
       material.dispose()
       renderer.dispose()
     }
-  }, [mobile, canvasRef.current])
+  }, [mobile])
 
   return (
     <Box
