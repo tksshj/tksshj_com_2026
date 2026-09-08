@@ -1,18 +1,17 @@
 'use client'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Checkbox from '@mui/material/Checkbox'
-import FormControl from '@mui/material/FormControl'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import InputLabel from '@mui/material/InputLabel'
-import MenuItem from '@mui/material/MenuItem'
-import Radio from '@mui/material/Radio'
-import RadioGroup from '@mui/material/RadioGroup'
-import Select from '@mui/material/Select'
-import Slider from '@mui/material/Slider'
-import Switch from '@mui/material/Switch'
-import TextField from '@mui/material/TextField'
-import Typography from '@mui/material/Typography'
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  Slider,
+  Switch,
+  TextField,
+  Typography,
+} from '@mui/material'
 import { useState } from 'react'
 
 const rowSx = {
@@ -80,14 +79,17 @@ export default function PageContent() {
         </Typography>
       </Box>
       <Box sx={{ ...rowSx }}>
-        <FormControl fullWidth>
-          <InputLabel>Select</InputLabel>
-          <Select value={selectValue} label='Select' onChange={(e) => setSelectValue(e.target.value)}>
-            <MenuItem value={'A'}>A</MenuItem>
-            <MenuItem value={'B'}>B</MenuItem>
-            <MenuItem value={'C'}>C</MenuItem>
-          </Select>
-        </FormControl>
+        <TextField
+          select
+          label='Select'
+          sx={{ width: '200px' }}
+          value={selectValue}
+          onChange={(e) => setSelectValue(e.target.value)}
+        >
+          <MenuItem value={'A'}>A</MenuItem>
+          <MenuItem value={'B'}>B</MenuItem>
+          <MenuItem value={'C'}>C</MenuItem>
+        </TextField>
         <Typography component='p' variant='h1' sx={{ ...textSx }}>
           {selectValue}
         </Typography>

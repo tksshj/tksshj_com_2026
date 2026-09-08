@@ -1,5 +1,10 @@
 [
   {
+    "path": "/atelier/animate",
+    "title": "animate",
+    "description": "MUIのコントロール"
+  },
+  {
     "path": "/atelier/bokeh-circle-01",
     "title": "bokeh-circle-01",
     "description": "smoothstepでぼかす"
