@@ -200,6 +200,11 @@
     "description": ""
   },
   {
+    "path": "/atelier/sphere-01",
+    "title": "sphere-01",
+    "description": ""
+  },
+  {
     "path": "/atelier/text-to-points",
     "title": "text-to-points",
     "description": ""
