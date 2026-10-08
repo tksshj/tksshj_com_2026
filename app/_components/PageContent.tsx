@@ -40,11 +40,13 @@ export default function PageContent() {
     <Container maxWidth='md'>
       <Header />
       <Box component='main'>
-        <MuiLink component={Link} href='./atelier/polar-coordinates-02'>
-          <Canvas />
-        </MuiLink>
+        <Box sx={{ width: '100%', aspectRatio: '1' }}>
+          <MuiLink component={Link} href='./atelier/polar-coordinates-02'>
+            <Canvas />
+          </MuiLink>
+        </Box>
+        <PageIndex index={index} isHome />
       </Box>
-      <PageIndex index={index} isHome />
     </Container>
   )
 }
