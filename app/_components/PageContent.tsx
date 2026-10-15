@@ -39,7 +39,7 @@ export default function PageContent() {
   return (
     <Container maxWidth='md'>
       <Header />
-      <Box component='main'>
+      <Box component='main' sx={{ padding: '0 0 56px' }}>
         <Box sx={{ width: '100%', aspectRatio: '1' }}>
           <MuiLink component={Link} href='./atelier/polar-coordinates-02'>
             <Canvas />
