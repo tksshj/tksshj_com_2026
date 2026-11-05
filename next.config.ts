@@ -3,12 +3,13 @@ import type { NextConfig } from 'next'
 const nextConfig: NextConfig = {
   output: 'export',
   outputFileTracingRoot: __dirname,
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.(glsl|vert|frag)$/,
-      use: 'raw-loader',
-    })
-    return config
+  turbopack: {
+    rules: {
+      '*.{glsl,vert,frag}': {
+        loaders: ['raw-loader'],
+        as: '*.js',
+      },
+    },
   },
 }
 
